@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,9 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
+      theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      routerConfig: AppRouting.router,
     );
   }
 }
