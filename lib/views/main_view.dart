@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -23,41 +24,39 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _currentIndex, children: _screens),
-      bottomNavigationBar: GNav(
-        rippleColor: Colors.grey[800]!, // tab button ripple color when pressed
-        hoverColor: Colors.grey[700]!, // tab button hover color
-        haptic: true, // haptic feedback
-        tabBorderRadius: 15,
-        tabActiveBorder: Border.all(
-          color: Colors.black,
-          width: 1,
-        ), // tab button border
-        tabBorder: Border.all(
-          color: Colors.grey,
-          width: 1,
-        ), // tab button border
-        tabShadow: [
-          BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8),
-        ], // tab button shadow
-        curve: Curves.easeOutExpo, // tab animation curves
-        duration: Duration(milliseconds: 900), // tab animation duration
-        gap: 8, // the tab button gap between icon and text
-        color: Colors.grey[800], // unselected icon color
-        activeColor: Colors.purple, // selected icon and text color
-        iconSize: 24, // tab button icon size
-        tabBackgroundColor: Colors.purple.withOpacity(
-          0.1,
-        ), // selected tab background color
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 5,
-        ), // navigation bar padding
-        tabs: const [
-          GButton(icon: FontAwesomeIcons.house, text: 'Home'),
-          GButton(icon: FontAwesomeIcons.solidHeart, text: 'Likes'),
-          GButton(icon: FontAwesomeIcons.cartShopping, text: 'Search'),
-          GButton(icon: FontAwesomeIcons.user, text: 'Profile'),
-        ],
+      bottomNavigationBar: Card(
+        margin: EdgeInsets.zero,
+        color: Colors.white,
+        elevation: 5,
+        shape: const RoundedRectangleBorder(),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: GNav(
+            selectedIndex: _currentIndex,
+            onTabChange: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            tabBorderRadius: 16,
+            curve: Curves.easeIn, // tab animation curves
+            gap: 8, // the tab button gap between icon and text
+            color: AppColors.secondaryColor, // unselected icon color
+            activeColor: Colors.white, // selected icon and text color
+            iconSize: 24, // tab button icon size
+            tabBackgroundColor: AppColors.primaryColor,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ), // navigation bar padding
+            tabs: const [
+              GButton(icon: FontAwesomeIcons.house),
+              GButton(icon: FontAwesomeIcons.solidHeart),
+              GButton(icon: FontAwesomeIcons.cartShopping),
+              GButton(icon: FontAwesomeIcons.user),
+            ],
+          ),
+        ),
       ),
     );
   }
