@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:e_commerce_app/views/main_view.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouting {
@@ -7,7 +7,7 @@ class AppRouting {
       GoRoute(
         path: '/',
         builder: (context, state) {
-          return const Scaffold();
+          return const MainView();
         },
       ),
     ],
