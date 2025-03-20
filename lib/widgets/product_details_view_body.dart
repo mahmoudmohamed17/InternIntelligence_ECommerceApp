@@ -26,7 +26,6 @@ class ProductDetailsViewBody extends StatelessWidget {
             child: ProductDetailsViewFooter(),
           ),
         ),
-        
       ],
     );
   }
