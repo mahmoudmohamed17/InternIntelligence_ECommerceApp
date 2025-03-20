@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/core/utils/spaces.dart';
+import 'package:e_commerce_app/widgets/product_details_view_content.dart';
 import 'package:e_commerce_app/widgets/product_details_view_header.dart';
 import 'package:flutter/material.dart';
 
@@ -6,8 +8,15 @@ class ProductDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      slivers: [SliverToBoxAdapter(child: ProductDetailsViewHeader())],
+    return CustomScrollView(
+      slivers: [
+        const SliverToBoxAdapter(child: ProductDetailsViewHeader()),
+        SliverToBoxAdapter(child: verticalSpace(16)),
+        const SliverToBoxAdapter(child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: ProductDetailsViewContent(),
+        )),
+      ],
     );
   }
 }
