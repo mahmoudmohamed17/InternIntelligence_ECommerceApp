@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/widgets/product_details_view_content.dart';
+import 'package:e_commerce_app/widgets/product_details_view_footer.dart';
 import 'package:e_commerce_app/widgets/product_details_view_header.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +13,20 @@ class ProductDetailsViewBody extends StatelessWidget {
       slivers: [
         const SliverToBoxAdapter(child: ProductDetailsViewHeader()),
         SliverToBoxAdapter(child: verticalSpace(16)),
-        const SliverToBoxAdapter(child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: ProductDetailsViewContent(),
-        )),
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: ProductDetailsViewContent(),
+          ),
+        ),
+        const SliverToBoxAdapter(child: Expanded(child: SizedBox())),
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: ProductDetailsViewFooter(),
+          ),
+        ),
+        SliverToBoxAdapter(child: verticalSpace(32)),
       ],
     );
   }

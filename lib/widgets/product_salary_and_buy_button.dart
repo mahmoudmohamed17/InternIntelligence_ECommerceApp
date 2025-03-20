@@ -1,17 +1,11 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
+import 'package:e_commerce_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-class ProductSalaryAndBuyButton extends StatefulWidget {
+class ProductSalaryAndBuyButton extends StatelessWidget {
   const ProductSalaryAndBuyButton({super.key});
 
-  @override
-  State<ProductSalaryAndBuyButton> createState() =>
-      _ProductSalaryAndBuyButtonState();
-}
-
-class _ProductSalaryAndBuyButtonState extends State<ProductSalaryAndBuyButton> {
-  bool _isAddedToCart = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,33 +22,9 @@ class _ProductSalaryAndBuyButtonState extends State<ProductSalaryAndBuyButton> {
             ),
           ),
         ),
-        ElevatedButton(
-          onPressed: () {
-            setState(() {
-              _isAddedToCart = !_isAddedToCart;
-            });
-          },
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor:
-                _isAddedToCart
-                    ? AppColors.primaryColor
-                    : AppColors.secondaryColor,
-            shadowColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-          ),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              _isAddedToCart ? 'Added' : 'Add',
-              style: AppTextStyles.bold12.copyWith(
-                color:
-                    _isAddedToCart ? Colors.white : AppColors.primaryTextColor,
-              ),
-            ),
-          ),
-        ),
+        const CustomButton(),
       ],
     );
   }
 }
+
