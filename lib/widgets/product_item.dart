@@ -2,11 +2,13 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/assets.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
+import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/widgets/product_rate_badge.dart';
 import 'package:e_commerce_app/widgets/product_salary_and_buy_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({super.key});
@@ -14,7 +16,9 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.go(AppRouting.productDetailsView);
+      },
       child: Stack(
         clipBehavior: Clip.none,
         children: [
