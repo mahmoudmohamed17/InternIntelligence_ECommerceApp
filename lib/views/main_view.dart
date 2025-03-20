@@ -54,7 +54,7 @@ class _MainViewState extends State<MainView> {
               GButton(icon: FontAwesomeIcons.house),
               GButton(icon: FontAwesomeIcons.solidHeart),
               GButton(icon: FontAwesomeIcons.cartShopping),
-              GButton(icon: FontAwesomeIcons.user),
+              GButton(icon: FontAwesomeIcons.solidUser),
             ],
           ),
         ),
