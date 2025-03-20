@@ -22,7 +22,7 @@ class _ProductItemState extends State<ProductItem> {
       clipBehavior: Clip.none,
       children: [
         Container(
-          constraints: BoxConstraints(maxHeight: context.height * 0.45),
+          constraints: BoxConstraints(maxHeight: context.height * 0.45, maxWidth: context.width * 0.55),
           decoration: BoxDecoration(
             color: AppColors.itemBackgroundColor,
             borderRadius: BorderRadius.circular(12),
