@@ -26,10 +26,7 @@ class ProductDetailsViewBody extends StatelessWidget {
             child: ProductDetailsViewFooter(),
           ),
         ),
-        const SliverFillRemaining(
-          hasScrollBody: false,
-          child: Expanded(child: SizedBox()),
-        ),
+        
       ],
     );
   }
