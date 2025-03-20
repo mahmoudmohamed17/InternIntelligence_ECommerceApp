@@ -19,14 +19,19 @@ class ProductDetailsViewBody extends StatelessWidget {
             child: ProductDetailsViewContent(),
           ),
         ),
-        const SliverToBoxAdapter(child: Expanded(child: SizedBox())),
+
+        SliverToBoxAdapter(child: verticalSpace(24)),
         const SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: ProductDetailsViewFooter(),
           ),
         ),
-        SliverToBoxAdapter(child: verticalSpace(32)),
+
+        const SliverFillRemaining(
+          hasScrollBody: false,
+          child: Expanded(child: SizedBox()),
+        ),
       ],
     );
   }
