@@ -1,8 +1,10 @@
+import 'package:e_commerce_app/core/helpers/product_entity.dart';
+
 import 'dimensions.dart';
 import 'meta.dart';
 import 'review.dart';
 
-class ProductModel {
+class ProductModel extends ProductEntity {
   int? id;
   String? title;
   String? description;
@@ -49,7 +51,13 @@ class ProductModel {
     this.meta,
     this.images,
     this.thumbnail,
-  });
+  }) : super(
+         productName: title ?? 'NO TITLE',
+         productDescription: description ?? 'NO DESCRIPTION',
+         productImages: images ?? [],
+         productRate: rating ?? 0.0,
+         productPrice: price ?? 0.0,
+       );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
     id: json['id'] as int?,
