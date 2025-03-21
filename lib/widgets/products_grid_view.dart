@@ -15,7 +15,7 @@ class ProductsGridView extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
-        mainAxisExtent: context.height * 0.45,
+        mainAxisExtent: context.height * 0.50,
       ),
     );
   }

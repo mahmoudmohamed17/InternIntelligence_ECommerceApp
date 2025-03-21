@@ -24,7 +24,7 @@ class ProductItem extends StatelessWidget {
         children: [
           Container(
             constraints: BoxConstraints(
-              maxHeight: context.height * 0.45,
+              maxHeight: context.height * 0.50,
               maxWidth: context.width * 0.55,
             ),
             decoration: BoxDecoration(
@@ -47,11 +47,9 @@ class ProductItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                verticalSpace(8),
                 Expanded(
                   child: Image.asset(
                     Assets.imagesHello,
-                    height: context.height * 0.20,
                     width: double.infinity,
                     fit: BoxFit.fill,
                   ),

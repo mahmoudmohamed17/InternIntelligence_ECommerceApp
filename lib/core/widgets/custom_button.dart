@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
         elevation: 0,
         backgroundColor: AppColors.primaryColor,
         shadowColor: Colors.transparent,
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       ),
       child: FittedBox(
         fit: BoxFit.scaleDown,
