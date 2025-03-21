@@ -1,4 +1,5 @@
 class ProductEntity {
+  final int productID;
   final String productName;
   final String productDescription;
   final List<String> productImages;
@@ -8,6 +9,7 @@ class ProductEntity {
   bool isAddedToCart;
 
   ProductEntity({
+    required this.productID,
     required this.productName,
     required this.productDescription,
     required this.productImages,
