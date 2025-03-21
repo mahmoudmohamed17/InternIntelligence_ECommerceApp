@@ -2,8 +2,9 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-class FavoritesViewHeader extends StatelessWidget {
-  const FavoritesViewHeader({super.key});
+class CustomHeader extends StatelessWidget {
+  const CustomHeader({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class FavoritesViewHeader extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Favorites',
+            title,
             style: AppTextStyles.bold24.copyWith(
               color: AppColors.primaryTextColor,
             ),

@@ -1,8 +1,8 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
+import 'package:e_commerce_app/core/widgets/custom_header.dart';
 import 'package:e_commerce_app/widgets/favorite_products_grid_view.dart';
-import 'package:e_commerce_app/widgets/favorites_view_header.dart';
 import 'package:flutter/cupertino.dart';
 
 class FavoritesViewWidget extends StatelessWidget {
@@ -13,7 +13,7 @@ class FavoritesViewWidget extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(child: FavoritesViewHeader()),
+          const SliverToBoxAdapter(child: CustomHeader(title: 'Favorites')),
           SliverToBoxAdapter(child: verticalSpace(16)),
           SliverToBoxAdapter(
             child: Padding(
