@@ -18,7 +18,7 @@ class ProductDetailsViewFooter extends StatelessWidget {
               elevation: 0,
               backgroundColor: AppColors.primaryColor,
               shadowColor: Colors.transparent,
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(12),
             ),
             child: FittedBox(
               fit: BoxFit.scaleDown,
@@ -33,7 +33,7 @@ class ProductDetailsViewFooter extends StatelessWidget {
         ),
         Text(
           r'$30.39',
-          style: AppTextStyles.semibold16.copyWith(
+          style: AppTextStyles.semibold18.copyWith(
             color: AppColors.primaryColor,
           ),
         ),
