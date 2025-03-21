@@ -57,7 +57,7 @@ class _ProductDetailsViewHeaderState extends State<ProductDetailsViewHeader> {
             ),
             const Positioned(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 32),
                 child: PageViewImageHeader(),
               ),
             ),
