@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
+import 'package:e_commerce_app/views/favorites_view_widget.dart';
 import 'package:e_commerce_app/views/home_view_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +17,7 @@ class _MainViewState extends State<MainView> {
 
   final List<Widget> _screens = const [
     HomeViewWidget(),
-    Center(child: Text('Favorites')),
+    FavoritesViewWidget(),
     Center(child: Text('Cart')),
     Center(child: Text('Profile')),
   ];
