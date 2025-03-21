@@ -7,14 +7,15 @@ class FavoritesViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
+    return Container(
       decoration: const BoxDecoration(color: AppColors.secondaryColor),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Favorites',
-            style: AppTextStyles.semibold18.copyWith(
+            style: AppTextStyles.bold24.copyWith(
               color: AppColors.primaryTextColor,
             ),
           ),
