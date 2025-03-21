@@ -3,9 +3,7 @@ import 'package:e_commerce_app/widgets/favorites_product_item.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteProductsGridView extends StatelessWidget {
-  const FavoriteProductsGridView({
-    super.key,
-  });
+  const FavoriteProductsGridView({super.key});
 
   @override
   Widget build(BuildContext context) {

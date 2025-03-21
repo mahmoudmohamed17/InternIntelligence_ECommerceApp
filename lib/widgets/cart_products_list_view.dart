@@ -1,12 +1,9 @@
-
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/widgets/cart_product_item.dart';
 import 'package:flutter/material.dart';
 
 class CartProductsListView extends StatelessWidget {
-  const CartProductsListView({
-    super.key,
-  });
+  const CartProductsListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +18,7 @@ class CartProductsListView extends StatelessWidget {
             child: Center(
               child: Text(
                 'Remove',
-                style: AppTextStyles.semibold16.copyWith(
-                  color: Colors.white,
-                ),
+                style: AppTextStyles.semibold16.copyWith(color: Colors.white),
               ),
             ),
           ),
