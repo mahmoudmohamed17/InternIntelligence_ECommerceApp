@@ -6,8 +6,9 @@ part 'product_state.dart';
 class ProductCubit extends Cubit<ProductState> {
   List<ProductEntity> favoritesProducts = [];
   List<ProductEntity> cartProducts = [];
+  double totalPrice = 0.0;
 
-  ProductCubit() : super(ProductInitial());
+  ProductCubit() : super(ProductState());
 
   final _firebaseService = FirebaseService();
 
@@ -18,7 +19,7 @@ class ProductCubit extends Cubit<ProductState> {
       product.isAddedToFavorites = true;
     }
     await _firebaseService.updateProduct(product);
-    emit(ProductFavoritesSuccess());
+    emitFavoritesState();
   }
 
   Future<void> changeCartStatus(ProductEntity product) async {
@@ -28,6 +29,22 @@ class ProductCubit extends Cubit<ProductState> {
       product.isAddedToCart = true;
     }
     await _firebaseService.updateProduct(product);
-    emit(ProductCartSuccess());
+    emitCartState();
+  }
+
+  void emitFavoritesState() {
+    if (favoritesProducts.isEmpty) {
+      emit(ProductFavoritesInitial());
+    } else {
+      emit(ProductFavoritesSuccess());
+    }
+  }
+
+  void emitCartState() {
+    if (cartProducts.isEmpty) {
+      emit(ProductCartInitial());
+    } else {
+      emit(ProductCartSuccess());
+    }
   }
 }

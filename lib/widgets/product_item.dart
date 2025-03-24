@@ -19,91 +19,96 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.go(AppRouting.productDetailsView, extra: product);
-      },
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            constraints: BoxConstraints(
-              maxHeight: context.height * 0.50,
-              maxWidth: context.width * 0.55,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.itemBackgroundColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+    return BlocBuilder<ProductCubit, ProductState>(
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () {
+            context.go(AppRouting.productDetailsView, extra: product);
+          },
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(
+                constraints: BoxConstraints(
+                  maxHeight: context.height * 0.50,
+                  maxWidth: context.width * 0.55,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.itemBackgroundColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        context.read<ProductCubit>().changeFavoritesStatus(
-                          product,
-                        );
-                      },
-                      icon: Icon(
-                        product.isAddedToFavorites
-                            ? FontAwesomeIcons.solidHeart
-                            : FontAwesomeIcons.heart,
-                        color: AppColors.primaryTextColor,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            context.read<ProductCubit>().changeFavoritesStatus(
+                              product,
+                            );
+                          },
+                          icon: Icon(
+                            product.isAddedToFavorites
+                                ? FontAwesomeIcons.solidHeart
+                                : FontAwesomeIcons.heart,
+                            color: AppColors.primaryTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Align(
+                        child: CachedNetworkImage(
+                          imageUrl: product.productImages.first,
+                          fit: BoxFit.fill,
+                          placeholder:
+                              (context, url) => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                          errorWidget:
+                              (context, url, error) => const Center(
+                                child: Icon(Icons.error, color: Colors.red),
+                              ),
+                        ),
                       ),
                     ),
+                    verticalSpace(8),
+                    FractionallySizedBox(
+                      widthFactor: 1,
+                      child: Text(
+                        product.productName,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.bold16.copyWith(
+                          color: AppColors.primaryTextColor,
+                        ),
+                      ),
+                    ),
+                    verticalSpace(4),
+                    FractionallySizedBox(
+                      widthFactor: 1,
+                      child: Text(
+                        product.productDescription,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.medium12.copyWith(
+                          color: AppColors.secondaryTextColor,
+                        ),
+                      ),
+                    ),
+                    verticalSpace(16),
+                    ProductSalaryAndBuyButton(product: product),
                   ],
                 ),
-                Expanded(
-                  child: Align(
-                    child: CachedNetworkImage(
-                      imageUrl: product.productImages.first,
-                      fit: BoxFit.fill,
-                      placeholder:
-                          (context, url) =>
-                              const Center(child: CircularProgressIndicator()),
-                      errorWidget:
-                          (context, url, error) => const Center(
-                            child: Icon(Icons.error, color: Colors.red),
-                          ),
-                    ),
-                  ),
-                ),
-                verticalSpace(8),
-                FractionallySizedBox(
-                  widthFactor: 1,
-                  child: Text(
-                    product.productName,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.bold16.copyWith(
-                      color: AppColors.primaryTextColor,
-                    ),
-                  ),
-                ),
-                verticalSpace(4),
-                FractionallySizedBox(
-                  widthFactor: 1,
-                  child: Text(
-                    product.productDescription,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.medium12.copyWith(
-                      color: AppColors.secondaryTextColor,
-                    ),
-                  ),
-                ),
-                verticalSpace(16),
-                ProductSalaryAndBuyButton(product: product),
-              ],
-            ),
+              ),
+              ProductRateBadge(productRate: product.productRate),
+            ],
           ),
-          ProductRateBadge(productRate: product.productRate),
-        ],
-      ),
+        );
+      },
     );
   }
 }

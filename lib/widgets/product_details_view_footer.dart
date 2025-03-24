@@ -36,8 +36,8 @@ class ProductDetailsViewFooter extends StatelessWidget {
                 style: AppTextStyles.semibold18.copyWith(
                   color:
                       product.isAddedToCart
-                          ? AppColors.primaryTextColor
-                          : Colors.white,
+                          ? Colors.white
+                          : AppColors.primaryTextColor,
                 ),
               ),
             ),

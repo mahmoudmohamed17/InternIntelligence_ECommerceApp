@@ -31,8 +31,8 @@ class CustomButton extends StatelessWidget {
           style: AppTextStyles.bold12.copyWith(
             color:
                 product.isAddedToCart
-                    ? AppColors.primaryTextColor
-                    : Colors.white,
+                    ? Colors.white
+                    : AppColors.primaryTextColor,
           ),
         ),
       ),
