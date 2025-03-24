@@ -52,7 +52,6 @@ class ProductModel extends ProductEntity {
     this.images,
     this.thumbnail,
   }) : super(
-         productID: id ?? 0,
          productCategory: category ?? 'NO CATEGORY',
          productName: title ?? 'NO TITLE',
          productDescription: description ?? 'NO DESCRIPTION',
