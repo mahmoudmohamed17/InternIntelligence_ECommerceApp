@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
 class CategoryItemModel {
   final String text;
   final String image;
-  final VoidCallback onTap;
+  final String endpoint;
 
   CategoryItemModel({
     required this.text,
     required this.image,
-    required this.onTap,
+    required this.endpoint,
   });
 }

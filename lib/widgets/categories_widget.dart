@@ -1,9 +1,12 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
+import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/utils/assets.dart';
+import 'package:e_commerce_app/managers/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/models/category_item_model.dart';
 import 'package:e_commerce_app/widgets/category_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({super.key});
@@ -16,16 +19,36 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   int _activeIndex = 0;
 
   final List<CategoryItemModel> _models = [
-    CategoryItemModel(text: 'Shirts', image: Assets.imagesMen, onTap: () {}),
-    CategoryItemModel(text: 'Shoes', image: Assets.imagesWomen, onTap: () {}),
+    CategoryItemModel(
+      text: 'Shirts',
+      image: Assets.imagesMen,
+      endpoint: AppConstants.shirtEndpoint,
+    ),
+    CategoryItemModel(
+      text: 'Shoes',
+      image: Assets.imagesMen,
+      endpoint: AppConstants.shoesEndpoint,
+    ),
     CategoryItemModel(
       text: 'Jewelry',
-      image: Assets.imagesElectronics,
-      onTap: () {},
+      image: Assets.imagesMen,
+      endpoint: AppConstants.jewelleryEndpoint,
     ),
-    CategoryItemModel(text: 'Laptops', image: Assets.imagesBeauty, onTap: () {}),
-    CategoryItemModel(text: 'Smartphones', image: Assets.imagesBeauty, onTap: () {}),
-    CategoryItemModel(text: 'Sunglasses', image: Assets.imagesBeauty, onTap: () {}),
+    CategoryItemModel(
+      text: 'Laptops',
+      image: Assets.imagesMen,
+      endpoint: AppConstants.laptopsEndpoint,
+    ),
+    CategoryItemModel(
+      text: 'Smartphones',
+      image: Assets.imagesMen,
+      endpoint: AppConstants.smartphonesEndpoint,
+    ),
+    CategoryItemModel(
+      text: 'Sunglasses',
+      image: Assets.imagesMen,
+      endpoint: AppConstants.sunglassesEndpoint,
+    ),
   ];
 
   @override
@@ -48,15 +71,17 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             itemCount: _models.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.only(right: index == _models.length - 1 ? 0 : 16),
+                padding: EdgeInsets.only(
+                  right: index == _models.length - 1 ? 0 : 16,
+                ),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
                       _activeIndex = index;
                     });
-                    WidgetsBinding.instance.addPostFrameCallback((e) {
-                      _models[index].onTap;
-                    });
+                    context.read<HomeCubit>().getProducts(
+                      endpoint: _models[index].endpoint,
+                    );
                   },
                   child: CategoryItem(
                     model: _models[index],
