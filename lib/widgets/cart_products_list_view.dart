@@ -24,7 +24,7 @@ class CartProductsListView extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.only(bottom: index == 9 ? 0 : 8),
-            child: const CartProductItem(),
+            child:  CartProductItem(),
           ),
         );
       },

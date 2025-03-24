@@ -22,7 +22,7 @@ class CartProductItem extends StatelessWidget {
           Expanded(
             child: SizedBox(
               width: context.width * 0.30,
-              child: Image.asset(Assets.imagesHello, fit: BoxFit.fill),
+              child: Image.asset(Assets.imagesHello, fit: BoxFit.contain),
             ),
           ),
           Column(
@@ -32,7 +32,7 @@ class CartProductItem extends StatelessWidget {
               SizedBox(
                 width: context.width * 0.65,
                 child: Text(
-                  'Product Name sadsadsadsad',
+                  'Product Name',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.bold16.copyWith(
@@ -43,11 +43,11 @@ class CartProductItem extends StatelessWidget {
               SizedBox(
                 width: context.width * 0.65,
                 child: Text(
-                  'Product Description',
+                  r'$30.99',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.medium12.copyWith(
-                    color: AppColors.secondaryTextColor,
+                  style: AppTextStyles.semibold16.copyWith(
+                    color: AppColors.primaryColor,
                   ),
                 ),
               ),
