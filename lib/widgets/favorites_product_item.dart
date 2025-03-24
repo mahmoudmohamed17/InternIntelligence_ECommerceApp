@@ -82,7 +82,7 @@ class FavoritesProductItem extends StatelessWidget {
               ],
             ),
           ),
-          const ProductRateBadge(),
+          const ProductRateBadge(productRate: 0,),
         ],
       ),
     );

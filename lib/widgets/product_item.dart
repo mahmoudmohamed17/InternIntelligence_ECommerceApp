@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
-import 'package:e_commerce_app/core/utils/assets.dart';
+import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
@@ -11,7 +12,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.product});
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +50,25 @@ class ProductItem extends StatelessWidget {
                   ],
                 ),
                 Expanded(
-                  child: Image.asset(
-                    Assets.imagesHello,
-                    width: double.infinity,
-                    fit: BoxFit.fill,
+                  child: Align(
+                    child: CachedNetworkImage(
+                      imageUrl: product.productImages.first,
+                      fit: BoxFit.fill,
+                      placeholder:
+                          (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
+                      errorWidget:
+                          (context, url, error) => const Center(
+                            child: Icon(Icons.error, color: Colors.red),
+                          ),
+                    ),
                   ),
                 ),
                 verticalSpace(8),
                 FractionallySizedBox(
                   widthFactor: 1,
                   child: Text(
-                    'Product Name dsfdsfdsfd sadsadd',
+                    product.productName,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.bold16.copyWith(
@@ -70,7 +80,7 @@ class ProductItem extends StatelessWidget {
                 FractionallySizedBox(
                   widthFactor: 1,
                   child: Text(
-                    'Product Description',
+                    product.productDescription,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.medium12.copyWith(
@@ -79,11 +89,11 @@ class ProductItem extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(16),
-                const ProductSalaryAndBuyButton(),
+                ProductSalaryAndBuyButton(product: product),
               ],
             ),
           ),
-          const ProductRateBadge(),
+          ProductRateBadge(productRate: product.productRate),
         ],
       ),
     );

@@ -3,7 +3,8 @@ import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ProductRateBadge extends StatelessWidget {
-  const ProductRateBadge({super.key});
+  const ProductRateBadge({super.key, required this.productRate});
+  final num productRate;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class ProductRateBadge extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
       child: Text(
-        '4.7',
+        productRate.toStringAsFixed(1),
         style: AppTextStyles.bold12.copyWith(color: Colors.white),
       ),
     );
