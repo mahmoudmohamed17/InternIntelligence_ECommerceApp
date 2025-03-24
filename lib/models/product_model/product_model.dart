@@ -94,6 +94,7 @@ class ProductModel extends ProductEntity {
     thumbnail: json['thumbnail'] as String?,
   );
 
+  @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'title': title,
