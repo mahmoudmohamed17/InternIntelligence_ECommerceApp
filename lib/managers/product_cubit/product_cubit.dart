@@ -36,7 +36,9 @@ class ProductCubit extends Cubit<ProductState> {
     if (favoritesProducts.isEmpty) {
       emit(ProductFavoritesInitial());
     } else {
-      emit(ProductFavoritesSuccess());
+      emit(
+        ProductFavoritesSuccess(products: List.unmodifiable(favoritesProducts)),
+      );
     }
   }
 
@@ -44,7 +46,7 @@ class ProductCubit extends Cubit<ProductState> {
     if (cartProducts.isEmpty) {
       emit(ProductCartInitial());
     } else {
-      emit(ProductCartSuccess());
+      emit(ProductCartSuccess(products: List.unmodifiable(cartProducts)));
     }
   }
 }
