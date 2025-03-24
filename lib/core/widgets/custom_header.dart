@@ -8,20 +8,17 @@ class CustomHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(color: AppColors.secondaryColor),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.bold24.copyWith(
-              color: AppColors.primaryTextColor,
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          title,
+          style: AppTextStyles.bold24.copyWith(
+            color: AppColors.primaryTextColor,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

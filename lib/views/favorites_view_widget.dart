@@ -11,31 +11,26 @@ class FavoritesViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(child: CustomHeader(title: 'Favorites')),
-          SliverToBoxAdapter(child: verticalSpace(16)),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Row(
-                children: [
-                  Text(
-                    'Total: 9',
-                    style: AppTextStyles.semibold18.copyWith(
-                      color: AppColors.primaryTextColor,
-                    ),
+      child: Column(
+        children: [
+          const CustomHeader(title: 'Favorites'),
+          verticalSpace(16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                Text(
+                  'Total: 9',
+                  style: AppTextStyles.semibold18.copyWith(
+                    color: AppColors.primaryTextColor,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          SliverToBoxAdapter(child: verticalSpace(12)),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            sliver: FavoriteProductsGridView(),
-          ),
-          SliverToBoxAdapter(child: verticalSpace(8)),
+          verticalSpace(12),
+          const Expanded(child: FavoriteProductsGridView()),
+          verticalSpace(8),
         ],
       ),
     );

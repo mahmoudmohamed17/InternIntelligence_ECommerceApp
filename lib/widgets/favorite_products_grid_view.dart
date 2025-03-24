@@ -7,10 +7,11 @@ class FavoriteProductsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      delegate: SliverChildBuilderDelegate((context, index) {
+    return GridView.builder(
+      itemBuilder: (context, index) {
         return const FavoritesProductItem();
-      }, childCount: 10),
+      },
+      itemCount: 10,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 8,
