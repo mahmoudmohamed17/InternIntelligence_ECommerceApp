@@ -51,7 +51,31 @@ class CartViewWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-              verticalSpace(8),
+              (state is ProductCartSuccess)
+                  ? Container(
+                    width: double.infinity,
+                    color: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 24,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        shadowColor: Colors.transparent,
+                        backgroundColor: AppColors.primaryColor,
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: Text(
+                        'Checkout',
+                        style: AppTextStyles.semibold18.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                  : const SizedBox.shrink(),
             ],
           ),
         );

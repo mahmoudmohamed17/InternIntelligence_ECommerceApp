@@ -30,9 +30,7 @@ class CartProductsListView extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(
-              bottom: index == products.length - 1 ? 0 : 8,
-            ),
+            padding: const EdgeInsets.only(bottom: 8),
             child: CartProductItem(product: products[index]),
           ),
         );
