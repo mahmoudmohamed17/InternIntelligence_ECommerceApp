@@ -35,6 +35,6 @@ flutter:
         - asset: assets/fonts/Poppins/Poppins-Regular.ttf
 flutter_assets:
   assets_path: assets/images/
-  output_path: lib/core/helpers
+  output_path: lib/core/utils
   filename: assets.dart
   field_prefix: null

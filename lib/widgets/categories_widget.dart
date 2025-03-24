@@ -18,39 +18,6 @@ class CategoriesWidget extends StatefulWidget {
 class _CategoriesWidgetState extends State<CategoriesWidget> {
   int _activeIndex = 0;
 
-  final List<CategoryItemModel> _models = [
-    CategoryItemModel(
-      text: 'Shirts',
-      image: Assets.imagesMen,
-      endpoint: AppConstants.shirtEndpoint,
-    ),
-    CategoryItemModel(
-      text: 'Shoes',
-      image: Assets.imagesMen,
-      endpoint: AppConstants.shoesEndpoint,
-    ),
-    CategoryItemModel(
-      text: 'Jewelry',
-      image: Assets.imagesMen,
-      endpoint: AppConstants.jewelleryEndpoint,
-    ),
-    CategoryItemModel(
-      text: 'Laptops',
-      image: Assets.imagesMen,
-      endpoint: AppConstants.laptopsEndpoint,
-    ),
-    CategoryItemModel(
-      text: 'Smartphones',
-      image: Assets.imagesMen,
-      endpoint: AppConstants.smartphonesEndpoint,
-    ),
-    CategoryItemModel(
-      text: 'Sunglasses',
-      image: Assets.imagesMen,
-      endpoint: AppConstants.sunglassesEndpoint,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -96,3 +63,36 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     );
   }
 }
+
+final List<CategoryItemModel> _models = [
+  CategoryItemModel(
+    text: 'Shirts',
+    image: Assets.imagesShirts,
+    endpoint: AppConstants.shirtEndpoint,
+  ),
+  CategoryItemModel(
+    text: 'Shoes',
+    image: Assets.imagesShoes,
+    endpoint: AppConstants.shoesEndpoint,
+  ),
+  CategoryItemModel(
+    text: 'Jewelry',
+    image: Assets.imagesJewelry,
+    endpoint: AppConstants.jewelleryEndpoint,
+  ),
+  CategoryItemModel(
+    text: 'Laptops',
+    image: Assets.imagesLaptops,
+    endpoint: AppConstants.laptopsEndpoint,
+  ),
+  CategoryItemModel(
+    text: 'Smartphones',
+    image: Assets.imagesSmartphone,
+    endpoint: AppConstants.smartphonesEndpoint,
+  ),
+  CategoryItemModel(
+    text: 'Sunglasses',
+    image: Assets.imagesSunglasses,
+    endpoint: AppConstants.sunglassesEndpoint,
+  ),
+];
