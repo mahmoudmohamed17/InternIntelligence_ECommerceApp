@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: MaterialApp.router(
-          theme: ThemeData(fontFamily: 'Poppins'),
-          debugShowCheckedModeBanner: false,
-          routerConfig: AppRouting.router,
-        ),
+        theme: ThemeData(fontFamily: 'Poppins'),
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouting.router,
+      ),
     );
   }
 }
