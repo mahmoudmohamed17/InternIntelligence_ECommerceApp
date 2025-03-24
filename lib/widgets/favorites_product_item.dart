@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
@@ -57,11 +58,16 @@ class FavoritesProductItem extends StatelessWidget {
                 ),
                 verticalSpace(8),
                 Expanded(
-                  child: Image.asset(
-                    product.productImages.first,
-                    height: context.height * 0.20,
-                    width: double.infinity,
+                  child: CachedNetworkImage(
+                    imageUrl: product.productImages.first,
                     fit: BoxFit.fill,
+                    placeholder:
+                        (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                    errorWidget:
+                        (context, url, error) => const Center(
+                          child: Icon(Icons.error, color: Colors.red),
+                        ),
                   ),
                 ),
                 verticalSpace(8),
