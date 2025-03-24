@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
-import 'package:e_commerce_app/core/helpers/assets.dart';
+import 'package:e_commerce_app/core/utils/assets.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
