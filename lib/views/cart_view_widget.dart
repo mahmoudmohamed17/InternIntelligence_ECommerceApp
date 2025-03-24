@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/core/widgets/custom_header.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/widgets/cart_products_list_view.dart';
+import 'package:e_commerce_app/widgets/checkout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,29 +53,7 @@ class CartViewWidget extends StatelessWidget {
                     ),
                   ),
               (state is ProductCartSuccess)
-                  ? Container(
-                    width: double.infinity,
-                    color: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 24,
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        backgroundColor: AppColors.primaryColor,
-                        padding: EdgeInsets.zero,
-                      ),
-                      child: Text(
-                        'Checkout',
-                        style: AppTextStyles.semibold18.copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  )
+                  ? const CheckoutWidget()
                   : const SizedBox.shrink(),
             ],
           ),

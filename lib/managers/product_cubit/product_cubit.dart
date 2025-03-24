@@ -26,9 +26,11 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> changeCartStatus(ProductEntity product) async {
     if (product.isAddedToCart) {
+      totalPrice -= product.productPrice;
       cartProducts.remove(product);
       product.isAddedToCart = false;
     } else {
+      totalPrice += product.productPrice;
       cartProducts.add(product);
       product.isAddedToCart = true;
     }
