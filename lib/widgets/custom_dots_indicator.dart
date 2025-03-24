@@ -3,13 +3,14 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomDotsIndicator extends StatelessWidget {
-  const CustomDotsIndicator({super.key, required this.currentPage});
+  const CustomDotsIndicator({super.key, required this.currentPage, required this.productImagesCount});
   final int currentPage;
+  final int productImagesCount;
 
   @override
   Widget build(BuildContext context) {
     return DotsIndicator(
-      dotsCount: 5,
+      dotsCount: productImagesCount,
       position: currentPage + 0.0,
       animate: true,
       decorator: DotsDecorator(

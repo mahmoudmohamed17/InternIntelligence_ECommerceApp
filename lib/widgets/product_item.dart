@@ -19,7 +19,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(AppRouting.productDetailsView);
+        context.go(AppRouting.productDetailsView, extra: product);
       },
       child: Stack(
         clipBehavior: Clip.none,
