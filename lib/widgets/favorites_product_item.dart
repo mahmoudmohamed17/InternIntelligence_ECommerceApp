@@ -91,7 +91,7 @@ class FavoritesProductItem extends StatelessWidget {
               ],
             ),
           ),
-          const ProductRateBadge(productRate: 0),
+          ProductRateBadge(productRate: product.productRate),
         ],
       ),
     );

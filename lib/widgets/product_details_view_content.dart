@@ -7,6 +7,7 @@ class ProductDetailsViewContent extends StatelessWidget {
   const ProductDetailsViewContent({super.key, required this.product});
   final ProductEntity product;
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
