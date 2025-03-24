@@ -5,18 +5,27 @@ import 'package:e_commerce_app/models/category_item_model.dart';
 import 'package:e_commerce_app/widgets/category_item.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesWidget extends StatelessWidget {
+class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({super.key});
 
-  static final List<CategoryItemModel> _models = [
-    CategoryItemModel(text: 'Men', image: Assets.imagesMen, onTap: () {}),
-    CategoryItemModel(text: 'Women', image: Assets.imagesWomen, onTap: () {}),
+  @override
+  State<CategoriesWidget> createState() => _CategoriesWidgetState();
+}
+
+class _CategoriesWidgetState extends State<CategoriesWidget> {
+  int _activeIndex = 0;
+
+  final List<CategoryItemModel> _models = [
+    CategoryItemModel(text: 'Shirts', image: Assets.imagesMen, onTap: () {}),
+    CategoryItemModel(text: 'Shoes', image: Assets.imagesWomen, onTap: () {}),
     CategoryItemModel(
-      text: 'Electronics',
+      text: 'Jewelry',
       image: Assets.imagesElectronics,
       onTap: () {},
     ),
-    CategoryItemModel(text: 'Beauty', image: Assets.imagesBeauty, onTap: () {}),
+    CategoryItemModel(text: 'Laptops', image: Assets.imagesBeauty, onTap: () {}),
+    CategoryItemModel(text: 'Smartphones', image: Assets.imagesBeauty, onTap: () {}),
+    CategoryItemModel(text: 'Sunglasses', image: Assets.imagesBeauty, onTap: () {}),
   ];
 
   @override
@@ -39,8 +48,21 @@ class CategoriesWidget extends StatelessWidget {
             itemCount: _models.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.only(right: index == 3 ? 0 : 16),
-                child: CategoryItem(model: _models[index]),
+                padding: EdgeInsets.only(right: index == _models.length - 1 ? 0 : 16),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _activeIndex = index;
+                    });
+                    WidgetsBinding.instance.addPostFrameCallback((e) {
+                      _models[index].onTap;
+                    });
+                  },
+                  child: CategoryItem(
+                    model: _models[index],
+                    isActive: _activeIndex == index,
+                  ),
+                ),
               );
             },
           ),
