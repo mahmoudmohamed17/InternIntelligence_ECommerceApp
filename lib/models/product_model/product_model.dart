@@ -13,7 +13,7 @@ class ProductModel extends ProductEntity {
   double? discountPercentage;
   double? rating;
   int? stock;
-  List<String>? tags;
+  List<dynamic>? tags;
   String? brand;
   String? sku;
   int? weight;
@@ -25,7 +25,7 @@ class ProductModel extends ProductEntity {
   String? returnPolicy;
   int? minimumOrderQuantity;
   Meta? meta;
-  List<String>? images;
+  List<dynamic>? images;
   String? thumbnail;
 
   ProductModel({
@@ -55,7 +55,7 @@ class ProductModel extends ProductEntity {
          productID: id ?? 0,
          productName: title ?? 'NO TITLE',
          productDescription: description ?? 'NO DESCRIPTION',
-         productImages: images ?? [],
+         productImages: images!.cast<String>(),
          productRate: rating ?? 0.0,
          productPrice: price ?? 0.0,
        );
@@ -69,7 +69,7 @@ class ProductModel extends ProductEntity {
     discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
     rating: (json['rating'] as num?)?.toDouble(),
     stock: json['stock'] as int?,
-    tags: json['tags'] as List<String>?,
+    tags: json['tags'],
     brand: json['brand'] as String?,
     sku: json['sku'] as String?,
     weight: json['weight'] as int?,
@@ -90,7 +90,7 @@ class ProductModel extends ProductEntity {
         json['meta'] == null
             ? null
             : Meta.fromJson(json['meta'] as Map<String, dynamic>),
-    images: json['images'] as List<String>?,
+    images: json['images'],
     thumbnail: json['thumbnail'] as String?,
   );
 

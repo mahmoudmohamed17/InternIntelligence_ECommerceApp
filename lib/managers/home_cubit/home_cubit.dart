@@ -11,6 +11,7 @@ class HomeCubit extends Cubit<HomeState> {
           status: HomeStatus.loading,
           products: [],
           selectedEndpoint: AppConstants.shirtEndpoint,
+          failureMessage: '',
         ),
       ) {
     getProducts(endpoint: AppConstants.shirtEndpoint);
@@ -26,8 +27,8 @@ class HomeCubit extends Cubit<HomeState> {
     var result = await _homeRepo.getProducts(endpoint: endpoint);
 
     result.fold(
-      (failed) {
-        emit(state.copyWith(status: HomeStatus.failed));
+      (failure) {
+        emit(state.copyWith(status: HomeStatus.failed, failureMessage: failure.message));
       },
       (products) {
         emit(state.copyWith(status: HomeStatus.success, products: products));

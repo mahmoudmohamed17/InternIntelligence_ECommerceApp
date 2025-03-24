@@ -14,13 +14,13 @@ class ProductsGridView extends StatelessWidget {
       builder: (context, state) {
         if (state.status == HomeStatus.loading) {
           return const SliverToBoxAdapter(
-            child: const Center(child: CircularProgressIndicator()),
+            child: Center(child: CircularProgressIndicator()),
           );
         } else if (state.status == HomeStatus.failed) {
-          return const SliverToBoxAdapter(
+          return SliverToBoxAdapter(
             child: Center(
               child: Text(
-                'Failed to fetch the data!',
+                state.failureMessage,
                 style: AppTextStyles.semibold18,
               ),
             ),
