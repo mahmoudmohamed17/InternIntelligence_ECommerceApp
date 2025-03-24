@@ -7,4 +7,10 @@ class AppConstants {
   static const String laptopsEndpoint = 'category/laptops';
   static const String smartphonesEndpoint = 'category/smartphones';
   static const String sunglassesEndpoint = 'category/sunglasses';
+  static const String shirtCategory = 'mens-shirts';
+  static const String shoesCategory = 'mens-shoes';
+  static const String jewelleryCategory = 'womens-jewellery';
+  static const String laptopsCategory = 'laptops';
+  static const String smartphonesCategory = 'smartphones';
+  static const String sunglassesCategory = 'sunglasses';
 }

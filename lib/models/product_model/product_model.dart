@@ -53,6 +53,7 @@ class ProductModel extends ProductEntity {
     this.thumbnail,
   }) : super(
          productID: id ?? 0,
+         productCategory: category ?? 'NO CATEGORY',
          productName: title ?? 'NO TITLE',
          productDescription: description ?? 'NO DESCRIPTION',
          productImages: images!.cast<String>(),
