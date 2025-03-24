@@ -1,5 +1,27 @@
 part of 'home_cubit.dart';
 
-class HomeState {}
+enum HomeStatus { loading, success, failed }
 
-final class HomeInitial extends HomeState {}
+class HomeState {
+  final HomeStatus status;
+  final List<ProductEntity> products;
+  final String selectedEndpoint;
+
+  HomeState({
+    required this.status,
+    required this.products,
+    required this.selectedEndpoint,
+  });
+
+  HomeState copyWith({
+    HomeStatus? status,
+    List<ProductEntity>? products,
+    String? selectedEndpoint,
+  }) {
+    return HomeState(
+      status: status ?? this.status,
+      products: products ?? this.products,
+      selectedEndpoint: selectedEndpoint ?? this.selectedEndpoint,
+    );
+  }
+}
