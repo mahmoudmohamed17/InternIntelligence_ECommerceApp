@@ -5,9 +5,11 @@ import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
+import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/widgets/product_rate_badge.dart';
 import 'package:e_commerce_app/widgets/product_salary_and_buy_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,9 +43,15 @@ class ProductItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        FontAwesomeIcons.heart,
+                      onPressed: () {
+                        context.read<ProductCubit>().changeFavoritesStatus(
+                          product,
+                        );
+                      },
+                      icon: Icon(
+                        product.isAddedToFavorites
+                            ? FontAwesomeIcons.solidHeart
+                            : FontAwesomeIcons.heart,
                         color: AppColors.primaryTextColor,
                       ),
                     ),

@@ -25,7 +25,7 @@ class ProductSalaryAndBuyButton extends StatelessWidget {
             ),
           ),
         ),
-        const CustomButton(),
+        CustomButton(product: product),
       ],
     );
   }

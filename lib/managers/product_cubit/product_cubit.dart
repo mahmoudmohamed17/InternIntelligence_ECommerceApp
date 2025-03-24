@@ -11,31 +11,23 @@ class ProductCubit extends Cubit<ProductState> {
 
   final _firebaseService = FirebaseService();
 
-  Future<void> addToFavorites(ProductEntity product) async {
-    product.isAddedToFavorites = true;
+  Future<void> changeFavoritesStatus(ProductEntity product) async {
+    if (product.isAddedToFavorites) {
+      product.isAddedToFavorites = false;
+    } else {
+      product.isAddedToFavorites = true;
+    }
     await _firebaseService.updateProduct(product);
-    favoritesProducts.add(product);
     emit(ProductFavoritesSuccess());
   }
 
-  Future<void> removeFromFavorites(ProductEntity product) async {
-    product.isAddedToFavorites = false;
+  Future<void> changeCartStatus(ProductEntity product) async {
+    if (product.isAddedToCart) {
+      product.isAddedToCart = false;
+    } else {
+      product.isAddedToCart = true;
+    }
     await _firebaseService.updateProduct(product);
-    favoritesProducts.remove(product);
-    emit(ProductFavoritesSuccess());
-  }
-
-  Future<void> addToCart(ProductEntity product) async {
-    product.isAddedToCart = true;
-    await _firebaseService.updateProduct(product);
-    cartProducts.remove(product);
-    emit(ProductCartSuccess());
-  }
-
-  Future<void> removeFromCart(ProductEntity product) async {
-    product.isAddedToCart = false;
-    await _firebaseService.updateProduct(product);
-    cartProducts.remove(product);
     emit(ProductCartSuccess());
   }
 }

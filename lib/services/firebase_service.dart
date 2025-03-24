@@ -18,6 +18,7 @@ class FirebaseService {
           'productPrice': product.productPrice,
         });
         product.productId = docRef.id;
+        updateProduct(product);
       }),
     );
   }
@@ -38,14 +39,9 @@ class FirebaseService {
 
   Future<void> updateProduct(ProductEntity product) async {
     await users.doc(product.productId).update({
-      'productName': product.productName,
-      'productDescription': product.productDescription,
-      'productCategory': product.productCategory,
-      'productImages': product.productImages,
+      'productId': product.productId,
       'isAddedToCart': product.isAddedToCart,
       'isAddedToFavorites': product.isAddedToFavorites,
-      'productRate': product.productRate,
-      'productPrice': product.productPrice,
     });
   }
 }
