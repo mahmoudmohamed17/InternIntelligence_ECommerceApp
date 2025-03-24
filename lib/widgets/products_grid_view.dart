@@ -13,19 +13,25 @@ class ProductsGridView extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state.status == HomeStatus.loading) {
-          return const Center(child: CircularProgressIndicator());
+          return const SliverToBoxAdapter(
+            child: const Center(child: CircularProgressIndicator()),
+          );
         } else if (state.status == HomeStatus.failed) {
-          return const Center(
-            child: Text(
-              'Failed to fetch the data!',
-              style: AppTextStyles.semibold18,
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: Text(
+                'Failed to fetch the data!',
+                style: AppTextStyles.semibold18,
+              ),
             ),
           );
         } else if (state.products.isEmpty) {
-          return const Center(
-            child: Text(
-              'There\'s no products!',
-              style: AppTextStyles.semibold18,
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: Text(
+                'There\'s no products!',
+                style: AppTextStyles.semibold18,
+              ),
             ),
           );
         }
