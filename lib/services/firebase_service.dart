@@ -6,7 +6,17 @@ class FirebaseService {
   Future<void> addProducts(List<ProductEntity> products) async {
     await Future.wait(
       products.map((product) async {
-        DocumentReference docRef = await users.add(product.toJson());
+        DocumentReference docRef = await users.add({
+          'productId': product.productId,
+          'productName': product.productName,
+          'productDescription': product.productDescription,
+          'productCategory': product.productCategory,
+          'productImages': product.productImages,
+          'isAddedToCart': product.isAddedToCart,
+          'isAddedToFavorites': product.isAddedToFavorites,
+          'productRate': product.productRate,
+          'productPrice': product.productPrice,
+        });
         product.productId = docRef.id;
       }),
     );
@@ -27,6 +37,15 @@ class FirebaseService {
   }
 
   Future<void> updateProduct(ProductEntity product) async {
-    await users.doc(product.productId).update(product.toJson());
+    await users.doc(product.productId).update({
+      'productName': product.productName,
+      'productDescription': product.productDescription,
+      'productCategory': product.productCategory,
+      'productImages': product.productImages,
+      'isAddedToCart': product.isAddedToCart,
+      'isAddedToFavorites': product.isAddedToFavorites,
+      'productRate': product.productRate,
+      'productPrice': product.productPrice,
+    });
   }
 }

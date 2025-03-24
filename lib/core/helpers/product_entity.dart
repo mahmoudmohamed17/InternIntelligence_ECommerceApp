@@ -37,7 +37,7 @@ class ProductEntity {
 
   factory ProductEntity.fromJson(Map<String, dynamic> json) {
     return ProductEntity(
-      productId: json['productID'] as String,
+      productId: json['productId'] as String,
       productCategory: json['productCategory'] as String,
       productName: json['productName'] as String,
       productDescription: json['productDescription'] as String,
