@@ -33,7 +33,9 @@ class StripeService {
         paymentSheetParameters: SetupPaymentSheetParameters(
       paymentIntentClientSecret: model.clientSecret,
       customerEphemeralKeySecret: model.ephemeralKey,
-      customerId: 'cus_RpJkhDSurfQKCd', // don't forget
+      customerId: 'cus_S0azXeScs3nOZI',
+      // As we still in the test mode, we make a request outside editor in Postman to get
+      // a customerId, utill we go live everything would change.
       merchantDisplayName: 'Mahmoud Mohamed', // The organization name
     ));
   }

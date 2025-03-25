@@ -50,6 +50,11 @@ class ProductCubit extends Cubit<ProductState> {
     emitCartState();
   }
 
+  void emptyCart() {
+    cartProducts.clear();
+    emitCartState();
+  }
+
   void emitFavoritesState() {
     if (favoritesProducts.isEmpty) {
       emit(ProductFavoritesInitial());
