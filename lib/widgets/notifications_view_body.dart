@@ -1,16 +1,35 @@
+import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
+import 'package:e_commerce_app/managers/notifications_cubit/notifications_cubit.dart';
+import 'package:e_commerce_app/widgets/notification_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotificationsViewBody extends StatelessWidget {
   const NotificationsViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Text('');
-      },
+      child: BlocBuilder<NotificationsCubit, NotificationsState>(
+        builder: (context, state) {
+          if (state is NotificationsFilled) {
+            return ListView.builder(
+              itemCount: state.notifications.length,
+              itemBuilder: (context, index) {
+                return NotificationItem(model: state.notifications[index]);
+              },
+            );
+          } else {
+            return const Center(
+              child: Text(
+                'You don\'t have any notifications yet!',
+                style: AppTextStyles.semibold18,
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
