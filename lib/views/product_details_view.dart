@@ -14,7 +14,6 @@ class ProductDetailsView extends StatelessWidget {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Colors.white,
           body: ProductDetailsViewBody(product: product),
         );
       },

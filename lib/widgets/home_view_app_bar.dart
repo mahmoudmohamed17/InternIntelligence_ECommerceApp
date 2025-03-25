@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,17 +14,11 @@ class HomeViewAppBar extends StatelessWidget {
           onPressed: () {
             scaffoldKey.currentState?.openDrawer();
           },
-          icon: const Icon(
-            FontAwesomeIcons.barsStaggered,
-            color: AppColors.primaryTextColor,
-          ),
+          icon: const Icon(FontAwesomeIcons.barsStaggered),
         ),
         IconButton(
           onPressed: () {},
-          icon: const Icon(
-            FontAwesomeIcons.magnifyingGlass,
-            color: AppColors.primaryTextColor,
-          ),
+          icon: const Icon(FontAwesomeIcons.magnifyingGlass),
         ),
       ],
     );

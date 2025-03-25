@@ -13,4 +13,6 @@ class AppConstants {
   static const String laptopsCategory = 'laptops';
   static const String smartphonesCategory = 'smartphones';
   static const String sunglassesCategory = 'sunglasses';
+  static const String appTheme = 'app_theme';
+
 }
