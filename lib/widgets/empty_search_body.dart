@@ -12,9 +12,9 @@ class EmptySearchBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 8,
+        spacing: 4,
         children: [
-          verticalSpace(context.height * 0.10),
+          verticalSpace(context.height * 0.05),
           Image.asset(
             Assets.imagesNoSearchResults,
             fit: BoxFit.cover,

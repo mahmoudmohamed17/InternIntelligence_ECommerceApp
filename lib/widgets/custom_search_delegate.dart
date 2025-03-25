@@ -52,7 +52,7 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child:
           matchQuery.isEmpty
               ? const EmptySearchBody()
@@ -69,7 +69,7 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child:
           matchQuery.isEmpty
               ? const EmptySearchBody()

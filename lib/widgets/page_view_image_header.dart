@@ -17,6 +17,9 @@ class PageViewImageHeader extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            }
             context.replace('/');
           },
           icon: const Icon(

@@ -26,7 +26,7 @@ class CartProductItem extends StatelessWidget {
               width: context.width * 0.30,
               child: CachedNetworkImage(
                 imageUrl: product.productImages.first,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
                 placeholder:
                     (context, url) =>
                         const Center(child: CircularProgressIndicator()),
@@ -42,7 +42,7 @@ class CartProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: context.width * 0.65,
+                width: context.width * 0.62,
                 child: Text(
                   product.productName,
                   maxLines: 2,
@@ -53,7 +53,7 @@ class CartProductItem extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: context.width * 0.65,
+                width: context.width * 0.62,
                 child: Text(
                   r'$'
                   '${product.productPrice.toStringAsFixed(2)}',
