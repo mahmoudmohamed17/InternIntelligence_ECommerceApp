@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
+import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/core/widgets/custom_header.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
@@ -29,8 +30,7 @@ class CartViewWidget extends StatelessWidget {
                   children: [
                     Text(
                       'Total: ${context.read<ProductCubit>().cartProducts.length}',
-                      style: AppTextStyles.semibold18.copyWith(
-                      ),
+                      style: AppTextStyles.semibold18.copyWith(),
                     ),
                   ],
                 ),
@@ -43,11 +43,17 @@ class CartViewWidget extends StatelessWidget {
                       child: CartProductsListView(products: state.products),
                     ),
                   )
-                  : Text(
-                    'You haven\'t add any products yet!',
-                    style: AppTextStyles.semibold18.copyWith(
-                      color: AppColors.primaryColor,
-                    ),
+                  : Column(
+                    children: [
+                      verticalSpace(context.height * 0.33),
+                      Text(
+                        'You haven\'t add any products yet!',
+                        style: AppTextStyles.semibold18.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                      verticalSpace(context.height * 0.33),
+                    ],
                   ),
               (state is ProductCartSuccess)
                   ? const CheckoutWidget()
