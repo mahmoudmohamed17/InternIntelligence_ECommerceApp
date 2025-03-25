@@ -13,8 +13,7 @@ class CustomHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTextStyles.bold24.copyWith(
-          ),
+          style: AppTextStyles.bold24,
         ),
       ],
     );
