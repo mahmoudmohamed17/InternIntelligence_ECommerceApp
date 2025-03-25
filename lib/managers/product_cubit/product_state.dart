@@ -4,16 +4,16 @@ class ProductState {}
 
 final class ProductFavoritesInitial extends ProductState {}
 
-final class ProductFavoritesSuccess extends ProductState {
+final class ProductFavoritesFilled extends ProductState {
   final List<ProductEntity> products;
 
-  ProductFavoritesSuccess({required this.products});
+  ProductFavoritesFilled({required this.products});
 }
 
 final class ProductCartInitial extends ProductState {}
 
-final class ProductCartSuccess extends ProductState {
+final class ProductCartFilled extends ProductState {
   final List<ProductEntity> products;
 
-  ProductCartSuccess({required this.products});
+  ProductCartFilled({required this.products});
 }

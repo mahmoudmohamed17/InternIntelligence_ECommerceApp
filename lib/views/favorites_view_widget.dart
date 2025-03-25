@@ -32,7 +32,7 @@ class FavoritesViewWidget extends StatelessWidget {
                 ),
               ),
               verticalSpace(12),
-              (state is ProductFavoritesSuccess)
+              (state is ProductFavoritesFilled)
                   ? Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),

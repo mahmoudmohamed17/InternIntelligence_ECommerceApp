@@ -36,7 +36,7 @@ class CartViewWidget extends StatelessWidget {
                 ),
               ),
               verticalSpace(12),
-              (state is ProductCartSuccess)
+              (state is ProductCartFilled)
                   ? Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -55,7 +55,7 @@ class CartViewWidget extends StatelessWidget {
                       verticalSpace(context.height * 0.33),
                     ],
                   ),
-              (state is ProductCartSuccess)
+              (state is ProductCartFilled)
                   ? const CheckoutWidget()
                   : const SizedBox.shrink(),
             ],
