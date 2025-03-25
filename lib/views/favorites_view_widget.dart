@@ -40,12 +40,10 @@ class FavoritesViewWidget extends StatelessWidget {
                       child: FavoriteProductsGridView(products: state.products),
                     ),
                   )
-                  : Center(
-                    child: Text(
-                      'You haven\'t add any products yet!',
-                      style: AppTextStyles.semibold18.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                  : Text(
+                    'You haven\'t add any products yet!',
+                    style: AppTextStyles.semibold18.copyWith(
+                      color: AppColors.primaryColor,
                     ),
                   ),
               verticalSpace(8),

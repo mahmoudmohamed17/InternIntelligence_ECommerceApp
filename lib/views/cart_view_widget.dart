@@ -44,12 +44,10 @@ class CartViewWidget extends StatelessWidget {
                       child: CartProductsListView(products: state.products),
                     ),
                   )
-                  : Center(
-                    child: Text(
-                      'You haven\'t add any products yet!',
-                      style: AppTextStyles.semibold18.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                  : Text(
+                    'You haven\'t add any products yet!',
+                    style: AppTextStyles.semibold18.copyWith(
+                      color: AppColors.primaryColor,
                     ),
                   ),
               (state is ProductCartSuccess)

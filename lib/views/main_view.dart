@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/views/cart_view_widget.dart';
 import 'package:e_commerce_app/views/favorites_view_widget.dart';
 import 'package:e_commerce_app/views/home_view_widget.dart';
+import 'package:e_commerce_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -12,6 +13,8 @@ class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
+
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _MainViewState extends State<MainView> {
   int _currentIndex = 0;
@@ -26,7 +29,9 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       body: IndexedStack(index: _currentIndex, children: _screens),
+      drawer: const CustomDrawer(),
       bottomNavigationBar: Card(
         margin: EdgeInsets.zero,
         color: Colors.white,

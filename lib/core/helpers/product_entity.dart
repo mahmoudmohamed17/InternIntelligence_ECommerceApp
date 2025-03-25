@@ -23,7 +23,7 @@ class ProductEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'productID': productId,
+      'productId': productId,
       'productCategory': productCategory,
       'productName': productName,
       'productDescription': productDescription,
