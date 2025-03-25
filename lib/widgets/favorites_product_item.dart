@@ -31,7 +31,7 @@ class FavoritesProductItem extends StatelessWidget {
               maxWidth: context.width * 0.55,
             ),
             decoration: BoxDecoration(
-              color: AppColors.itemLightBackgroundColor,
+              color: AppColors.itemBackgroundColor,
               borderRadius: BorderRadius.circular(12),
             ),
             padding: const EdgeInsets.all(8),

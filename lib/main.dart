@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               fontFamily: 'Poppins',
               brightness:
-                  SharedPrefs.getBool(AppConstants.appTheme)
-                      ? Brightness.light
-                      : Brightness.dark,
+                  SharedPrefs.getBool(AppConstants.isDarkMode)
+                      ? Brightness.dark
+                      : Brightness.light,
             ),
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouting.router,

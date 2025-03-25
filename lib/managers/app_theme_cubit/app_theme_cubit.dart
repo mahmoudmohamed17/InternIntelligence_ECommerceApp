@@ -7,7 +7,7 @@ class AppThemeCubit extends Cubit<AppThemeState> {
   AppThemeCubit() : super(AppThemeInitial());
 
   void changeTheme(bool value) {
-    SharedPrefs.setBool(AppConstants.appTheme, value);
+    SharedPrefs.setBool(AppConstants.isDarkMode, value);
     emit(AppThemeSuccess());
   }
 }

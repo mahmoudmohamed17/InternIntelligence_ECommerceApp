@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
+import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/models/category_item_model.dart';
+import 'package:e_commerce_app/services/shared_prefs.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -16,7 +18,12 @@ class CategoryItem extends StatelessWidget {
       children: [
         Card(
           color: Colors.white,
-          shadowColor: isActive ? AppColors.secondaryColor : null,
+          shadowColor:
+              isActive
+                  ? SharedPrefs.getBool(AppConstants.isDarkMode)
+                      ? AppColors.categoryDarkShadowColor
+                      : AppColors.secondaryColor
+                  : null,
           elevation: isActive ? 5 : 1,
           margin: EdgeInsets.zero,
           child: Padding(
@@ -29,11 +36,7 @@ class CategoryItem extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          model.text,
-          style: AppTextStyles.medium12.copyWith(
-          ),
-        ),
+        Text(model.text, style: AppTextStyles.medium12.copyWith()),
       ],
     );
   }
