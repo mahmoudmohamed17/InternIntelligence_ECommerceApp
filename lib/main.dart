@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/helpers/app_constants.dart';
+import 'package:e_commerce_app/core/utils/api_keys.dart';
 import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/firebase_options.dart';
 import 'package:e_commerce_app/managers/app_theme_cubit/app_theme_cubit.dart';
@@ -9,9 +10,11 @@ import 'package:e_commerce_app/services/shared_prefs.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = ApiKeys.stripePublishableKey;
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Future.wait([
     SharedPrefs.init(),

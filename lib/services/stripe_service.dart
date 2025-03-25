@@ -1,4 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_app/core/utils/api_keys.dart';
+import 'package:e_commerce_app/models/ephemeral_key_model/ephemeral_key_model.dart';
+import 'package:e_commerce_app/models/init_payment_sheet_input_model.dart';
+import 'package:e_commerce_app/models/payment_intent_input_model.dart';
+import 'package:e_commerce_app/models/payment_intent_model/payment_intent_model.dart';
 import 'package:e_commerce_app/services/api_service.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
@@ -14,7 +19,7 @@ class StripeService {
     var response = await _apiService.post(
         url: paymentIntentUrl,
         body: model.toJson(),
-        token: ApiKeys.secretKey,
+        token: ApiKeys.stripeSecretKey,
         contentType: Headers.formUrlEncodedContentType);
     var paymentIntentModel = PaymentIntentModel.fromJson(
         response.data); // parsing the data from response
@@ -44,22 +49,11 @@ class StripeService {
     var ephemeralKeyModel =
         await createEphemeralKey(customerId: model.customerId);
     var initPaymentSheetInputModel = InitPaymentSheetInputModel(
-        clientSecret: paymentIntentModel.clientSecret,
+        clientSecret: paymentIntentModel.clientSecret!,
         customerId: model.customerId,
         ephemeralKey: ephemeralKeyModel.secret!);
     await initPaymentSheet(model: initPaymentSheetInputModel);
     await displayPaymentSheet();
-  }
-
-  Future<CustomerModel> createCusomer(CustomerInputModel model) async {
-    var response = await _apiService.post(
-        url: customerCreationUrl,
-        body: model.toJson(),
-        token: ApiKeys.secretKey,
-        contentType: Headers.formUrlEncodedContentType);
-    var customerModel =
-        CustomerModel.fromJson(response.data); // parsing the data from response
-    return customerModel;
   }
 
   // called each time a user want to make a payment process
@@ -71,10 +65,10 @@ class StripeService {
           'customer': customerId,
         },
         headers: {
-          'Authorization': 'Bearer ${ApiKeys.secretKey}',
+          'Authorization': 'Bearer ${ApiKeys.stripeSecretKey}',
           'Stripe-Version': '2025-01-27.acacia',
         },
-        token: ApiKeys.secretKey,
+        token: ApiKeys.stripeSecretKey,
         contentType: Headers.formUrlEncodedContentType);
     var ephemeralKeyModel = EphemeralKeyModel.fromJson(
         response.data); // parsing the data from response
