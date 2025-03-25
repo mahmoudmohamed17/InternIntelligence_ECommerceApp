@@ -14,7 +14,7 @@ class CartProductItem extends StatelessWidget {
     return Container(
       constraints: BoxConstraints(maxHeight: context.height * 0.18),
       decoration: BoxDecoration(
-        color: AppColors.itemBackgroundColor,
+        color: AppColors.itemLightBackgroundColor,
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.all(8),

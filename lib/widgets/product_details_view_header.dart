@@ -38,7 +38,7 @@ class _ProductDetailsViewHeaderState extends State<ProductDetailsViewHeader> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: const BoxDecoration(color: AppColors.itemBackgroundColor),
+      decoration: const BoxDecoration(color: AppColors.itemLightBackgroundColor),
       child: SizedBox(
         height: context.height * 0.55,
         child: Stack(

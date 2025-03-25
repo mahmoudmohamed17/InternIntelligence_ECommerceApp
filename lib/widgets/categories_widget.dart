@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/utils/assets.dart';
@@ -25,12 +24,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8,
       children: [
-        Text(
-          'Search By Category',
-          style: AppTextStyles.semibold18.copyWith(
-            color: AppColors.primaryTextColor,
-          ),
-        ),
+        Text('Search By Category', style: AppTextStyles.semibold18.copyWith()),
         SizedBox(
           height: 107,
           child: ListView.builder(

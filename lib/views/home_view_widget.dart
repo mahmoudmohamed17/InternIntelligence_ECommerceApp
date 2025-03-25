@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/widgets/categories_widget.dart';
@@ -24,7 +23,6 @@ class HomeViewWidget extends StatelessWidget {
               child: Text(
                 'Popular Products',
                 style: AppTextStyles.semibold18.copyWith(
-                  color: AppColors.primaryTextColor,
                 ),
               ),
             ),

@@ -32,7 +32,6 @@ class CategoryItem extends StatelessWidget {
         Text(
           model.text,
           style: AppTextStyles.medium12.copyWith(
-            color: AppColors.primaryTextColor,
           ),
         ),
       ],

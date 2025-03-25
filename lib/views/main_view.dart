@@ -34,7 +34,6 @@ class _MainViewState extends State<MainView> {
       drawer: const CustomDrawer(),
       bottomNavigationBar: Card(
         margin: EdgeInsets.zero,
-        color: Colors.white,
         elevation: 5,
         shape: const RoundedRectangleBorder(),
         child: Padding(

@@ -26,7 +26,6 @@ class FavoritesViewWidget extends StatelessWidget {
                     Text(
                       'Total: ${context.read<ProductCubit>().favoritesProducts.length}',
                       style: AppTextStyles.semibold18.copyWith(
-                        color: AppColors.primaryTextColor,
                       ),
                     ),
                   ],

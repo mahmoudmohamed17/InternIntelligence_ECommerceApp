@@ -18,7 +18,6 @@ class ProductDetailsViewContent extends StatelessWidget {
         Text(
           product.productName,
           style: AppTextStyles.bold24.copyWith(
-            color: AppColors.primaryTextColor,
           ),
         ),
         Text(

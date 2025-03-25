@@ -30,7 +30,6 @@ class CartViewWidget extends StatelessWidget {
                     Text(
                       'Total: ${context.read<ProductCubit>().cartProducts.length}',
                       style: AppTextStyles.semibold18.copyWith(
-                        color: AppColors.primaryTextColor,
                       ),
                     ),
                   ],

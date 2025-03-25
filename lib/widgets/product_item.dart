@@ -34,7 +34,7 @@ class ProductItem extends StatelessWidget {
                   maxWidth: context.width * 0.55,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.itemBackgroundColor,
+                  color: AppColors.itemLightBackgroundColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.all(8),
