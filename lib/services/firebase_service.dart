@@ -23,7 +23,18 @@ class FirebaseService {
     );
   }
 
-  Future<List<ProductEntity>> getProducts({
+  Future<List<ProductEntity>> getAllProducts() async {
+    List<ProductEntity> products = [];
+    QuerySnapshot querySnapshot = await users.get();
+    for (var doc in querySnapshot.docs) {
+      var data = doc.data() as Map<String, dynamic>;
+      var product = ProductEntity.fromJson(data);
+      products.add(product);
+    }
+    return products;
+  }
+
+  Future<List<ProductEntity>> getProductsByCategory({
     required String productsCategory,
   }) async {
     List<ProductEntity> products = [];

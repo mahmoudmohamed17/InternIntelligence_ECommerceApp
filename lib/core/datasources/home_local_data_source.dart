@@ -13,7 +13,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   Future<List<ProductEntity>> getProducts({
     required String productsCategory,
   }) async {
-    return await _firebaseService.getProducts(
+    return await _firebaseService.getProductsByCategory(
       productsCategory: productsCategory,
     );
   }
