@@ -17,7 +17,25 @@ class NotificationsViewBody extends StatelessWidget {
             return ListView.builder(
               itemCount: state.notifications.length,
               itemBuilder: (context, index) {
-                return NotificationItem(model: state.notifications[index]);
+                return Dismissible(
+                  key: ValueKey(index),
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Remove',
+                      style: AppTextStyles.semibold16.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  onDismissed: (direction) {
+                    context.read<NotificationsCubit>().removeNotfication(
+                      state.notifications[index],
+                    );
+                  },
+                  child: NotificationItem(model: state.notifications[index]),
+                );
               },
             );
           } else {
