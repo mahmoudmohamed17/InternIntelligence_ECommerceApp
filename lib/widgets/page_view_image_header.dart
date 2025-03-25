@@ -29,7 +29,10 @@ class PageViewImageHeader extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            context.read<ProductCubit>().changeFavoritesStatus(product);
+            context.read<ProductCubit>().changeFavoritesStatus(
+              context,
+              product,
+            );
           },
           icon: Icon(
             product.isAddedToFavorites

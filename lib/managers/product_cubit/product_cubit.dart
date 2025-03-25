@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/core/helpers/snack_bar.dart';
 import 'package:e_commerce_app/services/firebase_service.dart';
+import 'package:flutter/material.dart';
 part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
@@ -12,26 +14,36 @@ class ProductCubit extends Cubit<ProductState> {
 
   final _firebaseService = FirebaseService();
 
-  Future<void> changeFavoritesStatus(ProductEntity product) async {
+  Future<void> changeFavoritesStatus(
+    BuildContext context,
+    ProductEntity product,
+  ) async {
     if (product.isAddedToFavorites) {
-      favoritesProducts.remove(product);
       product.isAddedToFavorites = false;
+      snackBar(context, 'Product removed from Favorites.');
+      favoritesProducts.remove(product);
     } else {
-      favoritesProducts.add(product);
       product.isAddedToFavorites = true;
+      snackBar(context, 'Product added to Favorites!');
+      favoritesProducts.add(product);
     }
     await _firebaseService.updateProduct(product);
     emitFavoritesState();
   }
 
-  Future<void> changeCartStatus(ProductEntity product) async {
+  Future<void> changeCartStatus(
+    BuildContext context,
+    ProductEntity product,
+  ) async {
     if (product.isAddedToCart) {
       totalPrice -= product.productPrice;
       product.isAddedToCart = false;
+      snackBar(context, 'Product removed from Cart.');
       cartProducts.remove(product);
     } else {
       totalPrice += product.productPrice;
       product.isAddedToCart = true;
+      snackBar(context, 'Product added to Cart!');
       cartProducts.add(product);
     }
     await _firebaseService.updateProduct(product);

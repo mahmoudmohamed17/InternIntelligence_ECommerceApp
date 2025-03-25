@@ -18,7 +18,7 @@ class ProductDetailsViewFooter extends StatelessWidget {
         Expanded(
           child: ElevatedButton(
             onPressed: () {
-              context.read<ProductCubit>().changeCartStatus(product);
+              context.read<ProductCubit>().changeCartStatus(context, product);
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,

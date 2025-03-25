@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        context.read<ProductCubit>().changeCartStatus(product);
+        context.read<ProductCubit>().changeCartStatus(context, product);
       },
       style: ElevatedButton.styleFrom(
         elevation: 0,

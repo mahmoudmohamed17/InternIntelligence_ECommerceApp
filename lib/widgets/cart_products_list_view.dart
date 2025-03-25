@@ -18,7 +18,10 @@ class CartProductsListView extends StatelessWidget {
         return Dismissible(
           key: ValueKey(index),
           onDismissed: (direction) {
-            context.read<ProductCubit>().changeCartStatus(products[index]);
+            context.read<ProductCubit>().changeCartStatus(
+              context,
+              products[index],
+            );
           },
           background: Container(
             decoration: const BoxDecoration(color: Colors.red),

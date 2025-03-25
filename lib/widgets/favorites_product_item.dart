@@ -44,6 +44,7 @@ class FavoritesProductItem extends StatelessWidget {
                     IconButton(
                       onPressed: () {
                         context.read<ProductCubit>().changeFavoritesStatus(
+                          context,
                           product,
                         );
                       },
