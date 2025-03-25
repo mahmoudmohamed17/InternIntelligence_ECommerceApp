@@ -3,13 +3,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-class  NotificationsService {
+class NotificationsService {
   final firebaseMessaging = FirebaseMessaging.instance;
 
   final androidNotificationChannel = const AndroidNotificationChannel(
-      'high_importance_channel', 'High Importance Notifications',
-      description: 'This channel is used for important notifications',
-      );
+    'high_importance_channel',
+    'High Importance Notifications',
+    description: 'This channel is used for important notifications',
+  );
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   void handleMessage(RemoteMessage? message) {
@@ -32,7 +33,10 @@ class  NotificationsService {
   Future<void> initPushNotifications() async {
     await FirebaseMessaging.instance
         .setForegroundNotificationPresentationOptions(
-            alert: true, sound: true, badge: true);
+          alert: true,
+          sound: true,
+          badge: true,
+        );
     FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
@@ -44,10 +48,13 @@ class  NotificationsService {
         notification.title,
         notification.body,
         NotificationDetails(
-            android: AndroidNotificationDetails(
-                androidNotificationChannel.id, androidNotificationChannel.name,
-                channelDescription: androidNotificationChannel.description,
-                icon: '@drawable/ic_launcher')),
+          android: AndroidNotificationDetails(
+            androidNotificationChannel.id,
+            androidNotificationChannel.name,
+            channelDescription: androidNotificationChannel.description,
+            icon: '@drawable/ic_launcher',
+          ),
+        ),
         payload: jsonEncode(message.toMap()),
       );
     });
@@ -56,16 +63,22 @@ class  NotificationsService {
   // Important to initialize the local notifications
   Future<void> initLocalNotifications() async {
     final iOS = const DarwinInitializationSettings();
-    final android = const AndroidInitializationSettings('@drawable/ic_launcher');
+    final android = const AndroidInitializationSettings(
+      '@drawable/ic_launcher',
+    );
     final settngs = InitializationSettings(iOS: iOS, android: android);
-    await flutterLocalNotificationsPlugin.initialize(settngs,
-        onDidReceiveNotificationResponse: (response) {
-      final message = RemoteMessage.fromMap(jsonDecode(response.payload!));
-      handleMessage(message);
-    });
+    await flutterLocalNotificationsPlugin.initialize(
+      settngs,
+      onDidReceiveNotificationResponse: (response) {
+        final message = RemoteMessage.fromMap(jsonDecode(response.payload!));
+        handleMessage(message);
+      },
+    );
     final platform =
-        flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+        flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
     await platform?.createNotificationChannel(androidNotificationChannel);
   }
 
