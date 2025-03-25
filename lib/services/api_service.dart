@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_app/core/errors/custom_exception.dart';
 
 class ApiService {
   final _dio = Dio(
@@ -15,5 +16,31 @@ class ApiService {
   }) async {
     var response = await _dio.get(endpoint);
     return response.data;
+  }
+
+  Future<Response> post({
+    required body,
+    required String url,
+    required String token,
+    Map<String, dynamic>? headers,
+    String? contentType,
+  }) async {
+    try {
+      var response = await _dio.post(
+        url,
+        data: body,
+        options: Options(
+          contentType: contentType,
+          headers: headers ?? {'Authorization': 'Bearer $token'},
+        ),
+      );
+      return response;
+    } on DioException catch (e) {
+      throw CustomException(
+        message: e.response!.data['error']['message'] ?? 'Unknown error',
+      );
+    } catch (e) {
+      throw CustomException(message: e.toString());
+    }
   }
 }
