@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
+import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/assets.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +9,12 @@ class EmptySearchBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 16,
+        spacing: 8,
         children: [
+          verticalSpace(context.height * 0.10),
           Image.asset(
             Assets.imagesNoSearchResults,
             fit: BoxFit.cover,
@@ -22,7 +24,6 @@ class EmptySearchBody extends StatelessWidget {
             textAlign: TextAlign.center,
             style: AppTextStyles.semibold18,
           ),
-          verticalSpace(120),
         ],
       ),
     );

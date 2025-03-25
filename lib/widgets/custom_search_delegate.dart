@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/services/shared_prefs.dart';
 import 'package:e_commerce_app/widgets/empty_search_body.dart';
 import 'package:e_commerce_app/widgets/search_results_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,13 @@ class CustomSearchDelegate extends SearchDelegate {
         onPressed: () {
           query = "";
         },
-        icon: const Icon(Icons.clear),
+        icon: Icon(
+          Icons.clear,
+          color:
+              SharedPrefs.getBool(AppConstants.isDarkMode)
+                  ? Colors.white
+                  : Colors.black,
+        ),
       ),
     ];
   }
@@ -25,7 +33,13 @@ class CustomSearchDelegate extends SearchDelegate {
       onPressed: () {
         close(context, null);
       },
-      icon: const Icon(Icons.arrow_back),
+      icon: Icon(
+        Icons.arrow_back,
+        color:
+            SharedPrefs.getBool(AppConstants.isDarkMode)
+                ? Colors.white
+                : Colors.black,
+      ),
     );
   }
 
