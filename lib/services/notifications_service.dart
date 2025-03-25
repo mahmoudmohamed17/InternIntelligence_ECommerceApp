@@ -52,7 +52,7 @@ class NotificationsService {
             androidNotificationChannel.id,
             androidNotificationChannel.name,
             channelDescription: androidNotificationChannel.description,
-            icon: '@drawable/ic_launcher',
+            icon: '@mipmap/ic_launcher',
           ),
         ),
         payload: jsonEncode(message.toMap()),
@@ -64,7 +64,7 @@ class NotificationsService {
   Future<void> initLocalNotifications() async {
     final iOS = const DarwinInitializationSettings();
     final android = const AndroidInitializationSettings(
-      '@drawable/ic_launcher',
+      '@mipmap/ic_launcher',
     );
     final settngs = InitializationSettings(iOS: iOS, android: android);
     await flutterLocalNotificationsPlugin.initialize(
@@ -94,7 +94,7 @@ class NotificationsService {
           androidNotificationChannel.id,
           androidNotificationChannel.name,
           channelDescription: androidNotificationChannel.description,
-          icon: '@drawable/ic_launcher',
+          icon: '@mipmap/ic_launcher',
         ),
       ),
     );

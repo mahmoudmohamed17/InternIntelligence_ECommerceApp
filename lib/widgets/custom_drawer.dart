@@ -42,7 +42,7 @@ class CustomDrawer extends StatelessWidget {
               title: 'Notifications',
               icon: FontAwesomeIcons.solidBell,
               onTap: () {
-                context.goNamed(AppRouting.notificationsView);
+                context.go(AppRouting.notificationsView);
               },
             ),
           ),

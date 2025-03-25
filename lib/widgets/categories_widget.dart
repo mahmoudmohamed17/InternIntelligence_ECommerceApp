@@ -26,7 +26,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       children: [
         Text('Search By Category', style: AppTextStyles.semibold18.copyWith()),
         SizedBox(
-          height: 107,
+          height: 112,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: _models.length,

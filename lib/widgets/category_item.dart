@@ -14,7 +14,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: 4,
+      spacing: 8,
       children: [
         Card(
           color: Colors.white,

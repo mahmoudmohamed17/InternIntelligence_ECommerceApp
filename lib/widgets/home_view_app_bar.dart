@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/services/notifications_service.dart';
 import 'package:e_commerce_app/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +18,9 @@ class HomeViewAppBar extends StatelessWidget {
           icon: const Icon(FontAwesomeIcons.barsStaggered),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            NotificationsService().sendLocalNotification(title: 'Test Notification', body: 'Hello World!');
+          },
           icon: const Icon(FontAwesomeIcons.magnifyingGlass),
         ),
       ],
