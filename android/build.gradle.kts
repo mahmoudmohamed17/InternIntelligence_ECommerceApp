@@ -14,10 +14,6 @@ subprojects {
 }
 
 subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-
-subprojects {
     project.evaluationDependsOn(":app")
 }
 
