@@ -15,7 +15,7 @@ class AppThemeSwitchButton extends StatelessWidget {
       builder: (context, state) {
         return ListTile(
           leading: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 500),
             transitionBuilder: (child, animation) {
               return RotationTransition(turns: animation, child: child);
             },
