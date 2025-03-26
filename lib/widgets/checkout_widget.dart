@@ -48,12 +48,11 @@ class CheckoutWidget extends StatelessWidget {
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 ),
                 useWidthAnimation: false,
-                useEqualLoadingStateWidgetDimension: false,
                 borderRadius: 100.0,
-                contentGap: 8.0,
+                contentGap: 5.0,
                 buttonColor: AppColors.primaryColor,
-                onPressed: () {
-                  makeCheckout(context);
+                onPressed: () async {
+                  await makeCheckout(context);
                 },
               ),
             ],
