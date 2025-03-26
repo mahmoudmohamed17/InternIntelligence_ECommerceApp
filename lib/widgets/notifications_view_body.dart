@@ -10,31 +10,36 @@ class NotificationsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      padding: const EdgeInsets.all(12),
       child: BlocBuilder<NotificationsCubit, NotificationsState>(
         builder: (context, state) {
           if (state is NotificationsFilled) {
             return ListView.builder(
               itemCount: state.notifications.length,
               itemBuilder: (context, index) {
-                return Dismissible(
-                  key: ValueKey(index),
-                  background: Container(
-                    color: Colors.red,
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Remove',
-                      style: AppTextStyles.semibold16.copyWith(
-                        color: Colors.white,
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: index == state.notifications.length - 1 ? 0 : 16,
+                  ),
+                  child: Dismissible(
+                    key: ValueKey(index),
+                    background: Container(
+                      color: Colors.red,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Remove',
+                        style: AppTextStyles.semibold16.copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
+                    onDismissed: (direction) {
+                      context.read<NotificationsCubit>().removeNotfication(
+                        state.notifications[index],
+                      );
+                    },
+                    child: NotificationItem(model: state.notifications[index]),
                   ),
-                  onDismissed: (direction) {
-                    context.read<NotificationsCubit>().removeNotfication(
-                      state.notifications[index],
-                    );
-                  },
-                  child: NotificationItem(model: state.notifications[index]),
                 );
               },
             );
