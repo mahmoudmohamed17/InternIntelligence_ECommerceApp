@@ -49,7 +49,7 @@ class CheckoutWidget extends StatelessWidget {
                 ),
                 useWidthAnimation: false,
                 borderRadius: 100.0,
-                contentGap: 6.0,
+                contentGap: 8.0,
                 buttonColor: AppColors.primaryColor,
                 onPressed: () {
                   makeCheckout(context);

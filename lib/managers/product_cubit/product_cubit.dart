@@ -51,6 +51,7 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   void emptyCart() {
+    totalPrice = 0.0;
     cartProducts.clear();
     emitCartState();
   }
