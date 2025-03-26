@@ -48,7 +48,7 @@ class ProductItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
-                          onPressed: () {
+                          onPressed: () async {
                             context.read<ProductCubit>().changeFavoritesStatus(
                               context,
                               product,

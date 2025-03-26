@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/managers/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
+import 'package:e_commerce_app/repos/home_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +21,9 @@ class ProductDetailsViewFooter extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               context.read<ProductCubit>().changeCartStatus(context, product);
+              context.read<HomeCubit>().getProducts(
+                endpoint: categoryEndpointsMap[product.productCategory]!,
+              );
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,

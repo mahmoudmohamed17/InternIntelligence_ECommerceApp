@@ -36,6 +36,15 @@ class HomeRepoImpl extends HomeRepo {
   }
 }
 
+Map<String, String> categoryEndpointsMap = {
+  AppConstants.shirtCategory: AppConstants.shirtEndpoint,
+  AppConstants.shoesCategory: AppConstants.shoesEndpoint,
+  AppConstants.jewelleryCategory: AppConstants.jewelleryEndpoint,
+  AppConstants.laptopsCategory: AppConstants.laptopsEndpoint,
+  AppConstants.smartphonesCategory: AppConstants.smartphonesEndpoint,
+  AppConstants.sunglassesCategory: AppConstants.sunglassesEndpoint,
+};
+
 Map<String, String> endpointsCategoryMap = {
   AppConstants.shirtEndpoint: AppConstants.shirtCategory,
   AppConstants.shoesEndpoint: AppConstants.shoesCategory,

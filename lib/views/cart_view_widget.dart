@@ -14,54 +14,66 @@ class CartViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(
-      builder: (context, state) {
-        return SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(
-                width: double.infinity,
-                child: CustomHeader(title: 'Cart'),
-              ),
-              verticalSpace(16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    Text(
+    return SafeArea(
+      child: Column(
+        children: [
+          const SizedBox(
+            width: double.infinity,
+            child: CustomHeader(title: 'Cart'),
+          ),
+          verticalSpace(16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                BlocBuilder<ProductCubit, ProductState>(
+                  builder: (context, state) {
+                    return Text(
                       'Total: ${context.read<ProductCubit>().cartProducts.length}',
                       style: AppTextStyles.semibold18.copyWith(),
-                    ),
-                  ],
+                    );
+                  },
                 ),
-              ),
-              verticalSpace(12),
-              (state is ProductCartFilled)
-                  ? Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: CartProductsListView(products: state.products),
-                    ),
-                  )
-                  : Column(
-                    children: [
-                      verticalSpace(context.height * 0.33),
-                      Text(
-                        'You haven\'t add any products yet!',
-                        style: AppTextStyles.semibold18.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                      verticalSpace(context.height * 0.33),
-                    ],
-                  ),
-              (state is ProductCartFilled)
-                  ? const CheckoutWidget()
-                  : const SizedBox.shrink(),
-            ],
+              ],
+            ),
           ),
-        );
-      },
+          verticalSpace(12),
+          BlocBuilder<ProductCubit, ProductState>(
+            builder: (context, state) {
+              if (state is ProductCartFilled) {
+                return Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: CartProductsListView(products: state.products),
+                  ),
+                );
+              } else {
+                return Column(
+                  children: [
+                    verticalSpace(context.height * 0.33),
+                    Text(
+                      'You haven\'t add any products yet!',
+                      style: AppTextStyles.semibold18.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                    verticalSpace(context.height * 0.33),
+                  ],
+                );
+              }
+            },
+          ),
+          BlocBuilder<ProductCubit, ProductState>(
+            builder: (context, state) {
+              if (state is ProductCartFilled) {
+                return const CheckoutWidget();
+              } else {
+                return const SizedBox.shrink();
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 }

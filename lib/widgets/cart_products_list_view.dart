@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/managers/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
+import 'package:e_commerce_app/repos/home_repo_impl.dart';
 import 'package:e_commerce_app/widgets/cart_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,9 +22,13 @@ class CartProductsListView extends StatelessWidget {
             return Dismissible(
               key: ValueKey(products[index].productId),
               onDismissed: (direction) async {
-                await context.read<ProductCubit>().changeCartStatus(
+                context.read<ProductCubit>().changeCartStatus(
                   context,
                   products[index],
+                );
+                context.read<HomeCubit>().getProducts(
+                  endpoint:
+                      categoryEndpointsMap[products[index].productCategory]!,
                 );
               },
               background: Container(

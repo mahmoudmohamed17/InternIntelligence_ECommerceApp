@@ -1,11 +1,9 @@
 import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
-import 'package:e_commerce_app/managers/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/services/shared_prefs.dart';
 import 'package:e_commerce_app/widgets/empty_search_body.dart';
 import 'package:e_commerce_app/widgets/search_results_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<ProductEntity> products;
@@ -33,10 +31,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      onPressed: () async {
-        // to get only the desired category's products
-        await context.read<HomeCubit>().getProducts(endpoint: endpoint);
-        // ignore: use_build_context_synchronously
+      onPressed: () {
         close(context, null);
       },
       icon: Icon(

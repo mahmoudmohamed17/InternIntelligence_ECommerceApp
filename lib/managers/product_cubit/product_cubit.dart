@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/core/helpers/snack_bar.dart';
@@ -18,7 +20,8 @@ class ProductCubit extends Cubit<ProductState> {
     BuildContext context,
     ProductEntity product,
   ) async {
-    if (product.isAddedToFavorites) {
+    if (product.isAddedToFavorites == true) {
+      log('Removing product');
       favoritesProducts.remove(product);
       product.isAddedToFavorites = false;
       snackBar(context, 'Product removed from Favorites.');
@@ -28,6 +31,10 @@ class ProductCubit extends Cubit<ProductState> {
       snackBar(context, 'Product added to Favorites!');
     }
     await _firebaseService.updateProduct(product);
+    await _firebaseService.getProductsByCategory(
+      productsCategory: product.productCategory,
+    );
+    log('Favorites done!');
     emitFavoritesState();
   }
 
@@ -35,7 +42,7 @@ class ProductCubit extends Cubit<ProductState> {
     BuildContext context,
     ProductEntity product,
   ) async {
-    if (product.isAddedToCart) {
+    if (product.isAddedToCart == true) {
       cartProducts.remove(product);
       totalPrice -= product.productPrice;
       product.isAddedToCart = false;
@@ -47,6 +54,9 @@ class ProductCubit extends Cubit<ProductState> {
       snackBar(context, 'Product added to Cart!');
     }
     await _firebaseService.updateProduct(product);
+    await _firebaseService.getProductsByCategory(
+      productsCategory: product.productCategory,
+    );
     emitCartState();
   }
 

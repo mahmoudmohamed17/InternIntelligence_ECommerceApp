@@ -10,21 +10,23 @@ class EmptySearchBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 4,
-        children: [
-          verticalSpace(context.height * 0.05),
-          Image.asset(
-            Assets.imagesNoSearchResults,
-            fit: BoxFit.cover,
-          ),
-          const Text(
-            'Sorry, we couldn\'t find any matching results!',
-            textAlign: TextAlign.center,
-            style: AppTextStyles.semibold18,
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            verticalSpace(context.height * 0.05),
+            Image.asset(
+              Assets.imagesNoSearchResults,
+              fit: BoxFit.cover,
+            ),
+            const Text(
+              'Sorry, we couldn\'t find any matching results!',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.semibold18,
+            ),
+          ],
+        ),
       ),
     );
   }

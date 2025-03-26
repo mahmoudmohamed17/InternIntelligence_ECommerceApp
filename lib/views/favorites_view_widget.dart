@@ -13,49 +13,55 @@ class FavoritesViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(
-      builder: (context, state) {
-        return SafeArea(
-          child: Column(
-            children: [
-              const CustomHeader(title: 'Favorites'),
-              verticalSpace(16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    Text(
+    return SafeArea(
+      child: Column(
+        children: [
+          const CustomHeader(title: 'Favorites'),
+          verticalSpace(16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                BlocBuilder<ProductCubit, ProductState>(
+                  builder: (context, state) {
+                    return Text(
                       'Total: ${context.read<ProductCubit>().favoritesProducts.length}',
                       style: AppTextStyles.semibold18.copyWith(),
-                    ),
-                  ],
+                    );
+                  },
                 ),
-              ),
-              verticalSpace(12),
-              (state is ProductFavoritesFilled)
-                  ? Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: FavoriteProductsGridView(products: state.products),
-                    ),
-                  )
-                  : Column(
-                    children: [
-                      verticalSpace(context.height * 0.33),
-                      Text(
-                        'You haven\'t add any products yet!',
-                        style: AppTextStyles.semibold18.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                      verticalSpace(context.height * 0.33),
-                    ],
-                  ),
-              verticalSpace(8),
-            ],
+              ],
+            ),
           ),
-        );
-      },
+          verticalSpace(12),
+          BlocBuilder<ProductCubit, ProductState>(
+            builder: (context, state) {
+              if (state is ProductFavoritesFilled) {
+                return Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: FavoriteProductsGridView(products: state.products),
+                  ),
+                );
+              } else {
+                return Column(
+                  children: [
+                    verticalSpace(context.height * 0.33),
+                    Text(
+                      'You haven\'t add any products yet!',
+                      style: AppTextStyles.semibold18.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                    verticalSpace(context.height * 0.33),
+                  ],
+                );
+              }
+            },
+          ),
+          verticalSpace(8),
+        ],
+      ),
     );
   }
 }
