@@ -11,7 +11,7 @@ import 'package:intl/intl.dart';
 Future<void> makeCheckout(BuildContext context) async {
   var amount = context.read<ProductCubit>().totalPrice.round().toString();
   var model = PaymentIntentInputModel(
-    amount: amount,
+    amount: '${amount}00',
     currency: 'USD',
     customerId: 'cus_S0azXeScs3nOZI',
   );
@@ -30,4 +30,6 @@ Future<void> makeCheckout(BuildContext context) async {
   );
   // ignore: use_build_context_synchronously
   context.read<NotificationsCubit>().addNotfication(notification);
+  // ignore: use_build_context_synchronously
+  context.read<ProductCubit>().emptyCart();
 }

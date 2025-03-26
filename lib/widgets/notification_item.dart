@@ -18,12 +18,10 @@ class NotificationItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           spacing: 8,
           children: [
-            Expanded(
-              child: ListTile(
-                leading: const Icon(FontAwesomeIcons.solidBell),
-                title: Text(model.content, style: AppTextStyles.semibold16),
-                contentPadding: EdgeInsets.zero,
-              ),
+            ListTile(
+              leading: const Icon(FontAwesomeIcons.solidBell),
+              title: Text(model.content, style: AppTextStyles.semibold16),
+              contentPadding: EdgeInsets.zero,
             ),
             Text(model.date, style: AppTextStyles.medium14),
           ],

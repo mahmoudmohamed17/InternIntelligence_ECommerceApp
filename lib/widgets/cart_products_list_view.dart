@@ -11,31 +11,37 @@ class CartProductsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      itemCount: products.length,
-      itemBuilder: (context, index) {
-        return Dismissible(
-          key: ValueKey(index),
-          onDismissed: (direction) {
-            context.read<ProductCubit>().changeCartStatus(
-              context,
-              products[index],
+    return BlocBuilder<ProductCubit, ProductState>(
+      builder: (context, state) {
+        return ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            return Dismissible(
+              key: ValueKey(products[index].productId),
+              onDismissed: (direction) async {
+                await context.read<ProductCubit>().changeCartStatus(
+                  context,
+                  products[index],
+                );
+              },
+              background: Container(
+                decoration: const BoxDecoration(color: Colors.red),
+                child: Center(
+                  child: Text(
+                    'Remove',
+                    style: AppTextStyles.semibold16.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: CartProductItem(product: products[index]),
+              ),
             );
           },
-          background: Container(
-            decoration: const BoxDecoration(color: Colors.red),
-            child: Center(
-              child: Text(
-                'Remove',
-                style: AppTextStyles.semibold16.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: CartProductItem(product: products[index]),
-          ),
         );
       },
     );

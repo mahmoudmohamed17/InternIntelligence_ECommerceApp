@@ -36,21 +36,25 @@ class ProductCubit extends Cubit<ProductState> {
     ProductEntity product,
   ) async {
     if (product.isAddedToCart) {
+      cartProducts.remove(product);
       totalPrice -= product.productPrice;
       product.isAddedToCart = false;
       snackBar(context, 'Product removed from Cart.');
-      cartProducts.remove(product);
     } else {
+      cartProducts.add(product);
       totalPrice += product.productPrice;
       product.isAddedToCart = true;
       snackBar(context, 'Product added to Cart!');
-      cartProducts.add(product);
     }
     await _firebaseService.updateProduct(product);
     emitCartState();
   }
 
   void emptyCart() {
+    for (var product in cartProducts) {
+      product.isAddedToCart = false;
+      _firebaseService.updateProduct(product);
+    }
     totalPrice = 0.0;
     cartProducts.clear();
     emitCartState();
