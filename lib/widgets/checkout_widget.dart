@@ -1,13 +1,15 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/make_checkout.dart';
+import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:easy_loading_button/easy_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckoutWidget extends StatelessWidget {
-  const CheckoutWidget({super.key});
+  const CheckoutWidget({super.key, required this.products});
+  final List<ProductEntity> products;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +51,10 @@ class CheckoutWidget extends StatelessWidget {
                 ),
                 useWidthAnimation: false,
                 borderRadius: 100.0,
-                contentGap: 5.0,
+                contentGap: 8.0,
                 buttonColor: AppColors.primaryColor,
                 onPressed: () async {
-                  await makeCheckout(context);
+                  await makeCheckout(context, products);
                 },
               ),
             ],

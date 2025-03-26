@@ -18,7 +18,6 @@ class ProductCubit extends Cubit<ProductState> {
 
   void changeFavoritesStatus(BuildContext context, ProductEntity product) {
     if (product.isAddedToFavorites) {
-      log('Removing product');
       favoritesProducts.remove(product);
       product.isAddedToFavorites = false;
       snackBar(context, 'Product removed from Favorites.');
@@ -27,7 +26,6 @@ class ProductCubit extends Cubit<ProductState> {
       product.isAddedToFavorites = true;
       snackBar(context, 'Product added to Favorites!');
     }
-    log('Favorites done!');
     emitFavoritesState();
   }
 
@@ -48,22 +46,25 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> updateBackend(ProductEntity product) async {
     await _firebaseService.updateProduct(product);
-    await _firebaseService.getProductsByCategory(
-      productsCategory: product.productCategory,
-    );
   }
 
   void emptyCart() {
     for (var product in cartProducts) {
       product.isAddedToCart = false;
-      _firebaseService.updateProduct(product);
     }
     totalPrice = 0.0;
     cartProducts.clear();
     emitCartState();
   }
 
+  Future<void> emptyCartList(List<ProductEntity> products) async {
+    for (var product in cartProducts) {
+      _firebaseService.updateProduct(product);
+    }
+  }
+
   void emitFavoritesState() {
+    log('Favorites list has ${favoritesProducts.length} item');
     if (favoritesProducts.isEmpty) {
       emit(ProductFavoritesInitial());
     } else {
@@ -74,6 +75,7 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   void emitCartState() {
+    log('Cart list has ${cartProducts.length} item');
     if (cartProducts.isEmpty) {
       emit(ProductCartInitial());
     } else {

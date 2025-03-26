@@ -66,7 +66,7 @@ class CartViewWidget extends StatelessWidget {
           BlocBuilder<ProductCubit, ProductState>(
             builder: (context, state) {
               if (state is ProductCartFilled) {
-                return const CheckoutWidget();
+                return  CheckoutWidget(products: state.products,);
               } else {
                 return const SizedBox.shrink();
               }

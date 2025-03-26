@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/utils/api_keys.dart';
 import 'package:e_commerce_app/core/utils/app_routing.dart';
+import 'package:e_commerce_app/core/utils/my_bloc_observer.dart';
 import 'package:e_commerce_app/firebase_options.dart';
 import 'package:e_commerce_app/managers/app_theme_cubit/app_theme_cubit.dart';
 import 'package:e_commerce_app/managers/home_cubit/home_cubit.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.publishableKey = ApiKeys.stripePublishableKey;
+  Bloc.observer = MyBlocObserver();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Future.wait([
     SharedPrefs.init(),
