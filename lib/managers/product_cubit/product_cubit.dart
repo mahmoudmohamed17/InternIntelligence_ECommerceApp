@@ -19,13 +19,13 @@ class ProductCubit extends Cubit<ProductState> {
     ProductEntity product,
   ) async {
     if (product.isAddedToFavorites) {
+      favoritesProducts.remove(product);
       product.isAddedToFavorites = false;
       snackBar(context, 'Product removed from Favorites.');
-      favoritesProducts.remove(product);
     } else {
+      favoritesProducts.add(product);
       product.isAddedToFavorites = true;
       snackBar(context, 'Product added to Favorites!');
-      favoritesProducts.add(product);
     }
     await _firebaseService.updateProduct(product);
     emitFavoritesState();
