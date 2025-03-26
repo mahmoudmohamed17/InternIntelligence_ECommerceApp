@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoriesWidget extends StatefulWidget {
-  const CategoriesWidget({super.key});
+  const CategoriesWidget({super.key, this.onTap});
+  final Function(String)? onTap;
 
   @override
   State<CategoriesWidget> createState() => _CategoriesWidgetState();
@@ -40,6 +41,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                     setState(() {
                       _activeIndex = index;
                     });
+                    widget.onTap?.call(_models[index].endpoint);
                     context.read<HomeCubit>().getProducts(
                       endpoint: _models[index].endpoint,
                     );
