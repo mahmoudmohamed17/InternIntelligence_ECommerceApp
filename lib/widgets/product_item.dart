@@ -53,6 +53,9 @@ class ProductItem extends StatelessWidget {
                               context,
                               product,
                             );
+                            await context.read<ProductCubit>().updateBackend(
+                              product,
+                            );
                           },
                           icon: Icon(
                             product.isAddedToFavorites

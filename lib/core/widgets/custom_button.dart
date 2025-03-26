@@ -12,8 +12,9 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
         context.read<ProductCubit>().changeCartStatus(context, product);
+        await context.read<ProductCubit>().updateBackend(product);
       },
       style: ElevatedButton.styleFrom(
         elevation: 0,
