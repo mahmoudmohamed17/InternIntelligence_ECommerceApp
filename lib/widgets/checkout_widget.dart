@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/make_checkout.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
+import 'package:easy_loading_button/easy_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,25 +38,22 @@ class CheckoutWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    makeCheckout(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    shadowColor: Colors.transparent,
-                    backgroundColor: AppColors.primaryColor,
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Text(
-                    'Checkout',
-                    style: AppTextStyles.semibold18.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
+              EasyButton(
+                idleStateWidget: Text(
+                  'Checkout',
+                  style: AppTextStyles.semibold18.copyWith(color: Colors.white),
                 ),
+                loadingStateWidget: const CircularProgressIndicator(
+                  strokeWidth: 3.0,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+                useWidthAnimation: false,
+                borderRadius: 100.0,
+                contentGap: 6.0,
+                buttonColor: AppColors.primaryColor,
+                onPressed: () {
+                  makeCheckout(context);
+                },
               ),
             ],
           ),

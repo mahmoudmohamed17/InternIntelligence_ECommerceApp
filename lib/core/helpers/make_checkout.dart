@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 Future<void> makeCheckout(BuildContext context) async {
-  var amount = context.read<ProductCubit>().totalPrice.toStringAsFixed(2);
+  var amount = context.read<ProductCubit>().totalPrice.round().toString();
   var model = PaymentIntentInputModel(
     amount: amount,
     currency: 'USD',

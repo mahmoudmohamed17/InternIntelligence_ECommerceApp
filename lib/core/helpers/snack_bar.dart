@@ -8,7 +8,7 @@ void snackBar(BuildContext context, String message) {
     margin: const EdgeInsets.all(16),
     borderRadius: BorderRadius.circular(100),
     animationDuration: const Duration(milliseconds: 500),
-    forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
-    reverseAnimationCurve: Curves.fastLinearToSlowEaseIn,
+    forwardAnimationCurve: Curves.easeIn,
+    reverseAnimationCurve: Curves.easeOut,
   ).show(context);
 }

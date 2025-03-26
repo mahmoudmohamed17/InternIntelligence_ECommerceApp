@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/core/errors/custom_exception.dart';
 
@@ -36,10 +38,14 @@ class ApiService {
       );
       return response;
     } on DioException catch (e) {
+      log('Error message from post method: ${e.response!.data.toString()}');
       throw CustomException(
         message: e.response!.data['error']['message'] ?? 'Unknown error',
       );
     } catch (e) {
+      log(
+        'Error message from post method: ${extensionStreamHasListener.toString()}',
+      );
       throw CustomException(message: e.toString());
     }
   }
