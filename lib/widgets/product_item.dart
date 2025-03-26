@@ -11,7 +11,6 @@ import 'package:e_commerce_app/widgets/product_salary_and_buy_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({super.key, required this.product});
@@ -23,7 +22,7 @@ class ProductItem extends StatelessWidget {
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
-            context.go(AppRouting.productDetailsView, extra: product);
+            Navigator.pushNamed(context, AppRouting.mainView, arguments: product);
           },
           child: Stack(
             clipBehavior: Clip.none,

@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<AppThemeCubit, AppThemeState>(
         builder: (context, state) {
-          return MaterialApp.router(
+          return MaterialApp(
             theme: ThemeData(
               fontFamily: 'Poppins',
               brightness:
@@ -47,7 +47,8 @@ class MyApp extends StatelessWidget {
                       : Brightness.light,
             ),
             debugShowCheckedModeBanner: false,
-            routerConfig: AppRouting.router,
+            initialRoute: AppRouting.mainView,
+            onGenerateRoute: AppRouting().onGeneratedRoute,
           );
         },
       ),

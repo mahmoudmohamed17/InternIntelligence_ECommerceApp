@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/views/cart_view_widget.dart';
 import 'package:e_commerce_app/views/favorites_view_widget.dart';
 import 'package:e_commerce_app/views/home_view_widget.dart';
@@ -9,6 +10,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
+  static const String id = AppRouting.mainView;
 
   @override
   State<MainView> createState() => _MainViewState();

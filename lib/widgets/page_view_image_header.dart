@@ -5,7 +5,6 @@ import 'package:e_commerce_app/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 
 class PageViewImageHeader extends StatelessWidget {
   const PageViewImageHeader({super.key, required this.product});
@@ -19,11 +18,9 @@ class PageViewImageHeader extends StatelessWidget {
         IconButton(
           onPressed: () async {
             final firebaseService = FirebaseService();
-            if (context.canPop()) {
-              context.pop();
-            }
-            context.replace('/');
             await firebaseService.getAllProducts();
+            // ignore: use_build_context_synchronously
+            Navigator.pop(context);
           },
           icon: const Icon(
             FontAwesomeIcons.chevronLeft,
