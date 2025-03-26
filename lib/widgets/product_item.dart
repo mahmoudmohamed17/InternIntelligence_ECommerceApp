@@ -3,9 +3,9 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
-import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
+import 'package:e_commerce_app/views/product_details_view.dart';
 import 'package:e_commerce_app/widgets/product_rate_badge.dart';
 import 'package:e_commerce_app/widgets/product_salary_and_buy_button.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,11 @@ class ProductItem extends StatelessWidget {
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, AppRouting.mainView, arguments: product);
+            Navigator.pushNamed(
+              context,
+              ProductDetailsView.id,
+              arguments: product,
+            );
           },
           child: Stack(
             clipBehavior: Clip.none,
@@ -47,7 +51,7 @@ class ProductItem extends StatelessWidget {
                           onPressed: () {
                             context.read<ProductCubit>().changeFavoritesStatus(
                               context,
-                              product
+                              product,
                             );
                           },
                           icon: Icon(

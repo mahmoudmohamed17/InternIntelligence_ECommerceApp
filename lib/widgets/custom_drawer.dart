@@ -1,15 +1,14 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
-import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/assets.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/models/drawer_item_model.dart';
+import 'package:e_commerce_app/views/notifications_view.dart';
 import 'package:e_commerce_app/widgets/app_theme_switch_button.dart';
 import 'package:e_commerce_app/widgets/drawer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -44,7 +43,7 @@ class CustomDrawer extends StatelessWidget {
               title: 'Notifications',
               icon: FontAwesomeIcons.solidBell,
               onTap: () {
-                context.go(AppRouting.notificationsView);
+                Navigator.pushNamed(context, NotificationsView.id);
               },
             ),
           ),

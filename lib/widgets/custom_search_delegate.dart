@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/helpers/app_constants.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/services/firebase_service.dart';
 import 'package:e_commerce_app/services/shared_prefs.dart';
 import 'package:e_commerce_app/widgets/empty_search_body.dart';
 import 'package:e_commerce_app/widgets/search_results_widget.dart';
@@ -30,7 +31,10 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      onPressed: () {
+      onPressed: () async {
+        final firebaseService = FirebaseService();
+        await firebaseService.getAllProducts();
+        // ignore: use_build_context_synchronously
         close(context, null);
       },
       icon: Icon(

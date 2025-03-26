@@ -3,9 +3,8 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
-import 'package:e_commerce_app/core/utils/app_routing.dart';
+import 'package:e_commerce_app/views/product_details_view.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SearchProductItem extends StatelessWidget {
   const SearchProductItem({super.key, required this.product});
@@ -15,7 +14,7 @@ class SearchProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(AppRouting.productDetailsView, extra: product);
+        Navigator.pushNamed(context, ProductDetailsView.id, arguments: product);
       },
       child: Container(
         constraints: BoxConstraints(maxHeight: context.height * 0.18),

@@ -1,7 +1,6 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
-import 'package:e_commerce_app/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,10 +15,7 @@ class PageViewImageHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          onPressed: () async {
-            final firebaseService = FirebaseService();
-            await firebaseService.getAllProducts();
-            // ignore: use_build_context_synchronously
+          onPressed: () {
             Navigator.pop(context);
           },
           icon: const Icon(
