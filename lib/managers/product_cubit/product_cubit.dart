@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
-import 'package:e_commerce_app/core/helpers/snack_bar.dart';
 import 'package:e_commerce_app/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 part 'product_state.dart';
@@ -20,11 +18,9 @@ class ProductCubit extends Cubit<ProductState> {
     if (product.isAddedToFavorites) {
       favoritesProducts.remove(product);
       product.isAddedToFavorites = false;
-      snackBar(context, 'Product removed from Favorites.');
     } else {
       favoritesProducts.add(product);
       product.isAddedToFavorites = true;
-      snackBar(context, 'Product added to Favorites!');
     }
     emitFavoritesState();
   }
@@ -34,12 +30,10 @@ class ProductCubit extends Cubit<ProductState> {
       cartProducts.remove(product);
       totalPrice -= product.productPrice;
       product.isAddedToCart = false;
-      snackBar(context, 'Product removed from Cart.');
     } else {
       cartProducts.add(product);
       totalPrice += product.productPrice;
       product.isAddedToCart = true;
-      snackBar(context, 'Product added to Cart!');
     }
     emitCartState();
   }
