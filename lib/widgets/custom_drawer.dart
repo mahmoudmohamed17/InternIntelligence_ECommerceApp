@@ -2,7 +2,6 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/utils/assets.dart';
 import 'package:e_commerce_app/models/drawer_item_model.dart';
-import 'package:e_commerce_app/views/notifications_view.dart';
 import 'package:e_commerce_app/widgets/app_theme_switch_button.dart';
 import 'package:e_commerce_app/widgets/drawer_item.dart';
 import 'package:flutter/material.dart';
@@ -38,15 +37,6 @@ class CustomDrawer extends StatelessWidget {
           ),
           DrawerItem(
             model: DrawerItemModel(
-              title: 'Notifications',
-              icon: FontAwesomeIcons.solidBell,
-              onTap: () {
-                Navigator.pushNamed(context, NotificationsView.id);
-              },
-            ),
-          ),
-          DrawerItem(
-            model: DrawerItemModel(
               title: 'Payments',
               icon: FontAwesomeIcons.creditCard,
               onTap: () {},
@@ -54,7 +44,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           DrawerItem(
             model: DrawerItemModel(
-              title: 'Support',
+              title: 'Help Center',
               icon: FontAwesomeIcons.headset,
               onTap: () {
                 // just for testing
@@ -66,6 +56,13 @@ class CustomDrawer extends StatelessWidget {
             model: DrawerItemModel(
               title: 'About Us',
               icon: FontAwesomeIcons.circleInfo,
+              onTap: () {},
+            ),
+          ),
+          DrawerItem(
+            model: DrawerItemModel(
+              title: 'Invite Friends',
+              icon: FontAwesomeIcons.gift,
               onTap: () {},
             ),
           ),
