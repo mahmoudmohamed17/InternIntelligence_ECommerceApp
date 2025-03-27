@@ -17,7 +17,7 @@ Future<void> makeCheckout(
   var model = PaymentIntentInputModel(
     amount: '${amount}00',
     currency: 'USD',
-    customerId: 'cus_S0azXeScs3nOZI',
+    customerId: 'cus_S1BglaXJEYrkU3',
   );
   await StripeService().makePayment(model: model);
   var notificationMessage =
