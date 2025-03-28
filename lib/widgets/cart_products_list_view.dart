@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/managers/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/widgets/cart_product_item.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,11 @@ class CartProductsListView extends StatelessWidget {
             return Dismissible(
               key: ValueKey(products[index].productId),
               onDismissed: (direction) async {
-                context.read<ProductCubit>().changeCartStatus(
+                context.read<CartCubit>().changeCartStatus(
                   context,
                   products[index],
                 );
+                context.read<ProductCubit>().changeProductStatus();
                 await context.read<ProductCubit>().updateProduct(
                   products[index],
                 );

@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/managers/favorites_cubit/favorites_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,10 +26,11 @@ class PageViewImageHeader extends StatelessWidget {
         ),
         IconButton(
           onPressed: () async {
-            context.read<ProductCubit>().changeFavoritesStatus(
+            context.read<FavoritesCubit>().changeFavoritesStatus(
               context,
               product,
             );
+            context.read<ProductCubit>().changeProductStatus();
             await context.read<ProductCubit>().updateProduct(product);
           },
           icon: Icon(
