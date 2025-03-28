@@ -53,7 +53,7 @@ class ProductItem extends StatelessWidget {
                               context,
                               product,
                             );
-                            await context.read<ProductCubit>().updateBackend(
+                            await context.read<ProductCubit>().updateProduct(
                               product,
                             );
                           },

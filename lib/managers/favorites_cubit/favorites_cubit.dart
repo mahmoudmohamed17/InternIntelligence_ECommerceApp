@@ -11,9 +11,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   void changeFavoritesStatus(BuildContext context, ProductEntity product) {
     if (product.isAddedToFavorites) {
+      product.isAddedToFavorites = false;
       favoritesProducts.remove(product);
       snackBar(context, 'Product removed from Favorites.');
     } else {
+      product.isAddedToFavorites = true;
       favoritesProducts.add(product);
       snackBar(context, 'Product added to Favorites!');
     }

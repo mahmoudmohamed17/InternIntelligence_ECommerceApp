@@ -38,7 +38,11 @@ class ProductCubit extends Cubit<ProductState> {
     emitCartState();
   }
 
-  Future<void> updateBackend(ProductEntity product) async {
+  void changeProductStatus() {
+    emit(ProductChanged());
+  }
+
+  Future<void> updateProduct(ProductEntity product) async {
     await _firebaseService.updateProduct(product);
   }
 

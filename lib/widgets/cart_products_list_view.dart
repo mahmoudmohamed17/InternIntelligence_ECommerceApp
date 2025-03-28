@@ -24,7 +24,7 @@ class CartProductsListView extends StatelessWidget {
                   context,
                   products[index],
                 );
-                await context.read<ProductCubit>().updateBackend(
+                await context.read<ProductCubit>().updateProduct(
                   products[index],
                 );
               },

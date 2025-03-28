@@ -15,9 +15,11 @@ class CartCubit extends Cubit<CartState> {
   void changeCartStatus(BuildContext context, ProductEntity product) {
     if (product.isAddedToCart) {
       cartProducts.remove(product);
+      totalPrice -= product.productPrice;
       snackBar(context, 'Product removed from Cart.');
     } else {
       cartProducts.add(product);
+      totalPrice += product.productPrice;
       snackBar(context, 'Product added to Cart!');
     }
     emitCartState();

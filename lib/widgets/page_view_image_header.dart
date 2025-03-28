@@ -29,7 +29,7 @@ class PageViewImageHeader extends StatelessWidget {
               context,
               product,
             );
-            await context.read<ProductCubit>().updateBackend(product);
+            await context.read<ProductCubit>().updateProduct(product);
           },
           icon: Icon(
             product.isAddedToFavorites
