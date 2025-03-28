@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
+import 'package:e_commerce_app/managers/favorites_cubit/favorites_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/views/product_details_view.dart';
 import 'package:e_commerce_app/widgets/product_rate_badge.dart';
@@ -49,7 +50,10 @@ class ProductItem extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () async {
-                            
+                            context
+                                .read<FavoritesCubit>()
+                                .changeFavoritesStatus(context, product);
+                            context.read<ProductCubit>().changeProductStatus();
                             await context.read<ProductCubit>().updateProduct(
                               product,
                             );
