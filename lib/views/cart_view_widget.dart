@@ -3,7 +3,7 @@ import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/core/widgets/custom_header.dart';
-import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
+import 'package:e_commerce_app/managers/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/widgets/cart_products_list_view.dart';
 import 'package:e_commerce_app/widgets/checkout_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +26,10 @@ class CartViewWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
-                BlocBuilder<ProductCubit, ProductState>(
+                BlocBuilder<CartCubit, CartState>(
                   builder: (context, state) {
                     return Text(
-                      'Total: ${context.read<ProductCubit>().cartProducts.length}',
+                      'Total: ${context.read<CartCubit>().cartProducts.length}',
                       style: AppTextStyles.semibold18.copyWith(),
                     );
                   },
@@ -38,9 +38,9 @@ class CartViewWidget extends StatelessWidget {
             ),
           ),
           verticalSpace(12),
-          BlocBuilder<ProductCubit, ProductState>(
+          BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
-              if (state is ProductCartFilled) {
+              if (state is CartFilled) {
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -63,9 +63,9 @@ class CartViewWidget extends StatelessWidget {
               }
             },
           ),
-          BlocBuilder<ProductCubit, ProductState>(
+          BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
-              if (state is ProductCartFilled) {
+              if (state is CartFilled) {
                 return  CheckoutWidget(products: state.products,);
               } else {
                 return const SizedBox.shrink();

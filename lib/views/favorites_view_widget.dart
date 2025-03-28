@@ -4,7 +4,6 @@ import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/core/widgets/custom_header.dart';
 import 'package:e_commerce_app/managers/favorites_cubit/favorites_cubit.dart';
-import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/widgets/favorite_products_grid_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +25,7 @@ class FavoritesViewWidget extends StatelessWidget {
                 BlocBuilder<FavoritesCubit, FavoritesState>(
                   builder: (context, state) {
                     return Text(
-                      'Total: ${context.read<ProductCubit>().favoritesProducts.length}',
+                      'Total: ${context.read<FavoritesCubit>().favoritesProducts.length}',
                       style: AppTextStyles.semibold18.copyWith(),
                     );
                   },
@@ -35,9 +34,9 @@ class FavoritesViewWidget extends StatelessWidget {
             ),
           ),
           verticalSpace(12),
-          BlocBuilder<ProductCubit, ProductState>(
+          BlocBuilder<FavoritesCubit, FavoritesState>(
             builder: (context, state) {
-              if (state is ProductFavoritesFilled) {
+              if (state is FavoritesFilled) {
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
