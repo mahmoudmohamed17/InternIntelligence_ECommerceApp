@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<ProductEntity> products;
-  final String endpoint;
-  CustomSearchDelegate({required this.products, required this.endpoint});
+  CustomSearchDelegate({required this.products});
 
   @override
   List<Widget>? buildActions(BuildContext context) {

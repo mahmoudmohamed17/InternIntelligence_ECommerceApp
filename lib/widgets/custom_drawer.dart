@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
-import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/assets.dart';
 import 'package:e_commerce_app/models/drawer_item_model.dart';
 import 'package:e_commerce_app/widgets/app_theme_switch_button.dart';
@@ -34,15 +33,6 @@ class CustomDrawer extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-            ),
-          ),
-          DrawerItem(
-            model: DrawerItemModel(
-              title: 'Notifications',
-              icon: FontAwesomeIcons.solidBell,
-              onTap: () {
-                Navigator.pushNamed(context, AppRouting.notificationsView);
-              },
             ),
           ),
           DrawerItem(
