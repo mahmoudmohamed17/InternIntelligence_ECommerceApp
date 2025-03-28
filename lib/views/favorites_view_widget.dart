@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/context_extension.dart';
 import 'package:e_commerce_app/core/utils/spaces.dart';
 import 'package:e_commerce_app/core/widgets/custom_header.dart';
+import 'package:e_commerce_app/managers/favorites_cubit/favorites_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/widgets/favorite_products_grid_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +23,7 @@ class FavoritesViewWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
-                BlocBuilder<ProductCubit, ProductState>(
+                BlocBuilder<FavoritesCubit, FavoritesState>(
                   builder: (context, state) {
                     return Text(
                       'Total: ${context.read<ProductCubit>().favoritesProducts.length}',

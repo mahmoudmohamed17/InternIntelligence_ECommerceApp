@@ -4,6 +4,8 @@ import 'package:e_commerce_app/core/utils/app_routing.dart';
 import 'package:e_commerce_app/core/utils/my_bloc_observer.dart';
 import 'package:e_commerce_app/firebase_options.dart';
 import 'package:e_commerce_app/managers/app_theme_cubit/app_theme_cubit.dart';
+import 'package:e_commerce_app/managers/cart_cubit/cart_cubit.dart';
+import 'package:e_commerce_app/managers/favorites_cubit/favorites_cubit.dart';
 import 'package:e_commerce_app/managers/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/managers/notifications_cubit/notifications_cubit.dart';
 import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => ProductCubit()),
+        BlocProvider(create: (context) => FavoritesCubit()),
+        BlocProvider(create: (context) => CartCubit()),
         BlocProvider(create: (context) => AppThemeCubit()),
         BlocProvider(create: (context) => NotificationsCubit()),
       ],
