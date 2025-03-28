@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
+import 'package:e_commerce_app/managers/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/managers/notifications_cubit/notifications_cubit.dart';
-import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/models/notification_item_model.dart';
 import 'package:e_commerce_app/models/payment_intent_input_model.dart';
 import 'package:e_commerce_app/services/notifications_service.dart';
@@ -13,7 +13,7 @@ Future<void> makeCheckout(
   BuildContext context,
   List<ProductEntity> products,
 ) async {
-  var amount = context.read<ProductCubit>().totalPrice.round().toString();
+  var amount = context.read<CartCubit>().totalPrice.round().toString();
   var model = PaymentIntentInputModel(
     amount: '${amount}00',
     currency: 'USD',
@@ -35,7 +35,7 @@ Future<void> makeCheckout(
   // ignore: use_build_context_synchronously
   context.read<NotificationsCubit>().addNotfication(notification);
   // ignore: use_build_context_synchronously
-  context.read<ProductCubit>().emptyCart();
+  context.read<CartCubit>().emptyCart();
   // ignore: use_build_context_synchronously
-  context.read<ProductCubit>().emptyCartList(products);
+  context.read<CartCubit>().updateCartEmptyBackend();
 }

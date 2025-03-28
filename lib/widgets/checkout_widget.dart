@@ -2,7 +2,7 @@ import 'package:e_commerce_app/core/helpers/app_colors.dart';
 import 'package:e_commerce_app/core/helpers/app_text_styles.dart';
 import 'package:e_commerce_app/core/helpers/make_checkout.dart';
 import 'package:e_commerce_app/core/helpers/product_entity.dart';
-import 'package:e_commerce_app/managers/product_cubit/product_cubit.dart';
+import 'package:e_commerce_app/managers/cart_cubit/cart_cubit.dart';
 import 'package:easy_loading_button/easy_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,7 @@ class CheckoutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(
+    return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         return Container(
           width: double.infinity,
@@ -33,7 +33,7 @@ class CheckoutWidget extends StatelessWidget {
                   ),
                   Text(
                     r'$'
-                    '${context.read<ProductCubit>().totalPrice.toStringAsFixed(2)}',
+                    '${context.read<CartCubit>().totalPrice.toStringAsFixed(2)}',
                     style: AppTextStyles.semibold18.copyWith(
                       color: AppColors.primaryColor,
                     ),
